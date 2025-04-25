@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Adan | Personal Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ====== GLOBAL STYLES ====== */
+        :root {
+            --primary: #4F46E5;
+            --primary-light: #818CF8;
+            --secondary: #EC4899;
+            --dark: #1F2937;
+            --darker: #111827;
+            --light: #F9FAFB;
+            --lighter: #FFFFFF;
+            --gray: #6B7280;
+            --light-gray: #E5E7EB;
+            --success: #10B981;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        /* ====== HEADER ====== */
+        header {
+            background: var(--lighter);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .logo span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* ====== HERO SECTION ====== */
+        .hero {
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--primary-light) 0%, rgba(79, 70, 229, 0) 70%);
+            opacity: 0.4;
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--secondary) 0%, rgba(236, 72, 153, 0) 70%);
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--darker);
+            line-height: 1.1;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--gray);
+            font-size: 1.2rem;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+        }
+
+        .hero-cta:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+        }
+
+        /* ====== BLOG POSTS ====== */
+        .blog-posts {
+            background: var(--lighter);
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .post-card {
+            background: var(--lighter);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .post-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .post-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .post-image {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .post-card:hover .post-image img {
+            transform: scale(1.05);
+        }
+
+        .post-content {
+            padding: 25px;
+        }
+
+        .post-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .post-date {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .post-category {
+            background: var(--light-gray);
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--dark);
+        }
+
+        .post-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--darker);
+        }
+
+        .post-excerpt {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .read-more i {
+            transition: var(--transition);
+        }
+
+        .read-more:hover {
+            color: var(--secondary);
+        }
+
+        .read-more:hover i {
+            transform: translateX(3px);
+        }
+
+        /* ====== ABOUT SECTION ====== */
+        .about {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.05) 0%, rgba(79, 70, 229, 0.05) 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-text h2 {
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: var(--gray);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--light-gray);
+            color: var(--dark);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* ====== NEWSLETTER ====== */
+        .newsletter {
+            background: var(--primary);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 50px 0 0 50px;
+            font-size: 1rem;
+        }
+
+        .newsletter-button {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 50px 50px 0;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-button:hover {
+            background: #DB2777;
+        }
+
+        /* ====== FOOTER ====== */
+        footer {
+            background: var(--darker);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .footer-column p {
+            color: #9CA3AF;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #9CA3AF;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9CA3AF;
+            font-size: 0.9rem;
+        }
+
+        /* ====== RESPONSIVE DESIGN ====== */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 60px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .posts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                border-radius: 50px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-button {
+                border-radius: 50px;
+                padding: 12px 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                gap: 20px;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ====== HEADER ====== -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">Mohammed<span>Adan</span></div>
+                <div class="nav-links">
+                    <a href="#">Home</a>
+                    <a href="#articles">Articles</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ====== HERO SECTION ====== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Afkaaro, Qissooyin & Xikmado</h1>
+                <p>Ku soo dhawoow, halkaan waa page-kayga aan jeclahay inaan ku soo gudbiyo maqaallo faa’iido leh..</p>
+                <a href="#articles" class="hero-cta">Sahmi Maqaallada</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== BLOG POSTS ====== -->
+    <section id="articles" class="blog-posts section">
+        <div class="container">
+            <h2 class="section-title">Maqaallada cusub</h2>
+            <div class="posts-grid">
+                <!-- Post 1 -->
+                <article class="post-card">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Blog post image">
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date"><i class="far fa-calendar"></i> June 15, 2023</span>
+                            <span class="post-category">Cilmi nafsi</span>
+                        </div>
+                        <h3 class="post-title">IS OGAALKU WAA MUHIIM </h3>
+                        <p class="post-excerpt">Haddii aad rabto inaad naftaada horumariso, waa inaad marka hore naftaada fahamtaa. Waxaad akhrin kartaa buugaag badan oo horumarinta nafta ku saabsan, laakiin haddii aadan is-ogaal lahayn oo aadan garaneyn dabeecadahaaga.,.</p>
+                        <a href="/article1.html" class="read-more">Sii Akhri <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 2 -->
+                <article class="post-card">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Blog post image">
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date"><i class="far fa-calendar"></i> June 10, 2023</span>
+                            <span class="post-category">Productivity</span>
+                        </div>
+                        <h3 class="post-title">Mastering the Art of Deep Work</h3>
+                        <p class="post-excerpt">Practical strategies to eliminate distractions and achieve a state of flow in your work to produce your best output in less time.</p>
+                        <a href="/article2.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- Post 3 -->
+                <article class="post-card">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Blog post image">
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date"><i class="far fa-calendar"></i> June 5, 2023</span>
+                            <span class="post-category">Design</span>
+                        </div>
+                        <h3 class="post-title">Principles of Minimalist Design</h3>
+                        <p class="post-excerpt">How to apply minimalist design principles to create clean, functional, and beautiful interfaces that enhance user experience.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                
+                                <!-- Post 3 -->
+                <article class="post-card">
+                    <div class="post-image">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Blog post image">
+                    </div>
+                    <div class="post-content">
+                        <div class="post-meta">
+                            <span class="post-date"><i class="far fa-calendar"></i> June 5, 2023</span>
+                            <span class="post-category">Design</span>
+                        </div>
+                        <h3 class="post-title">Principles of Minimalist Design</h3>
+                        <p class="post-excerpt">How to apply minimalist design principles to create clean, functional, and beautiful interfaces that enhance user experience.</p>
+                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== ABOUT SECTION ====== -->
+    <section id="about" class="about section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Mohammed Adan">
+                </div>
+                <div class="about-text">
+                    <h2 class="section-title">About Me</h2>
+                    <p>Hello, I'm Mohammed Adan, a passionate web developer and designer with over 5 years of experience creating digital experiences that matter.</p>
+                    <p>I started this blog to share my knowledge, document my learning journey, and connect with like-minded individuals in the tech community.</p>
+                    <p>When I'm not coding, you can find me reading books, exploring new technologies, or enjoying a good cup of coffee.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== NEWSLETTER ====== -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Subscribe to My Newsletter</h2>
+            <p>Get the latest articles and resources delivered straight to your inbox every week.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                <button type="submit" class="newsletter-button">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ====== FOOTER ====== -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Mohammed Adan</h3>
+                    <p>A personal blog sharing thoughts on technology, design, productivity, and life lessons.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#articles">Articles</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Categories</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Technology</a></li>
+                        <li><a href="#">Design</a></li>
+                        <li><a href="#">Productivity</a></li>
+                        <li><a href="#">Life</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><a href="mailto:hello@mohammedadan.com">hello@mohammedadan.com</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Mohammed Adan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
