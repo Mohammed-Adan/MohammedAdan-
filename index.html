@@ -338,8 +338,8 @@
         </div>
     </header>
 
-    <!-- Hero -->
-    <section class="hero">
+    <!-- Hero (will be hidden when viewing article) -->
+    <section class="hero" id="heroSection">
         <div class="container">
             <h1 id="mainTitle">REYS AQOON</h1>
             <p id="mainSubtitle">waa madal loogu tala galay in lagu gudbiyo, maqaallo faa'iido leh</p>
@@ -360,7 +360,7 @@
                     <p class="article-excerpt">True wisdom begins with presence. In our fast-paced world, we often forget to simply be where we are. This piece explores how to cultivate mindfulness in daily life.</p>
                     <div class="read-more-container">
                         <a href="#article1" class="btn btn-primary read-more-btn">
-                            <i class="fas fa-book-open"></i> Read More
+                            <i class="fas fa-book-open"></i> Akhri wax badan
                         </a>
                     </div>
                 </div>
@@ -421,8 +421,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const articlesList = document.getElementById('articlesList');
             const articleDetails = document.getElementById('articleDetails');
-            const mainTitle = document.getElementById('mainTitle');
-            const mainSubtitle = document.getElementById('mainSubtitle');
+            const heroSection = document.getElementById('heroSection');
             const readMoreBtns = document.querySelectorAll('.read-more-btn');
             const backHomeBtns = document.querySelectorAll('.back-home-btn');
             const articleDetailViews = document.querySelectorAll('.article-detail');
@@ -433,8 +432,9 @@
                     e.preventDefault();
                     const articleId = this.getAttribute('href').substring(1);
                     
-                    // Add fade-out animation to articles list
+                    // Add fade-out animation to articles list and hero section
                     articlesList.classList.add('fade-out');
+                    heroSection.classList.add('fade-out');
                     
                     // After fade-out completes, switch views and fade in article
                     setTimeout(() => {
@@ -456,8 +456,10 @@
                         
                         // Switch views
                         articlesList.style.display = 'none';
+                        heroSection.style.display = 'none';
                         articleDetails.style.display = 'block';
                         articlesList.classList.remove('fade-out');
+                        heroSection.classList.remove('fade-out');
                         
                         // Scroll to top
                         window.scrollTo({
@@ -486,14 +488,17 @@
                         
                         // Switch views
                         articlesList.style.display = 'block';
+                        heroSection.style.display = 'block';
                         articleDetails.style.display = 'none';
                         
-                        // Add fade-in animation to articles list
+                        // Add fade-in animation to articles list and hero
                         articlesList.classList.add('fade-in');
+                        heroSection.classList.add('fade-in');
                         
                         // Remove animation classes after completion
                         setTimeout(() => {
                             articlesList.classList.remove('fade-in');
+                            heroSection.classList.remove('fade-in');
                             articleDetails.classList.remove('fade-out');
                         }, 500);
                         
@@ -516,8 +521,9 @@
                     article.style.display = 'block';
                     article.classList.add('active');
                     
-                    // Switch views
+                    // Hide hero and list, show details
                     articlesList.style.display = 'none';
+                    heroSection.style.display = 'none';
                     articleDetails.style.display = 'block';
                 }
             }
