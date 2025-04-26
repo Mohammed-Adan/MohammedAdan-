@@ -342,7 +342,7 @@
     <section class="hero">
         <div class="container">
             <h1 id="mainTitle">REYS AQOON</h1>
-            <p id="mainSubtitle">waa madal loogu tala galay in lagu gudbiyo, maqaallo faa’iido leh</p>
+            <p id="mainSubtitle">waa madal loogu tala galay in lagu gudbiyo, maqaallo faa'iido leh</p>
         </div>
     </section>
 
@@ -364,9 +364,6 @@
                         </a>
                     </div>
                 </div>
-            </article>
-
-
             </article>
         </div>
     </main>
@@ -409,16 +406,14 @@
                     </div>
                 </div>
             </article>
-
-
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-logo">Wisdom<span>Garden</span></div>
-            <p class="copyright">© 2023 Wisdom Garden. All rights reserved.</p>
+            <div class="footer-logo">REYS<span>AQOON</span></div>
+            <p class="copyright">© 2023 REYS AQOON. All rights reserved.</p>
         </div>
     </footer>
 
@@ -464,16 +459,12 @@
                         articleDetails.style.display = 'block';
                         articlesList.classList.remove('fade-out');
                         
-                        // Update hero section
-                        mainTitle.textContent = document.querySelector(`#${articleId} .article-title`).textContent;
-                        mainSubtitle.textContent = 'Deep dive into wisdom';
-                        
                         // Scroll to top
                         window.scrollTo({
                             top: 0,
                             behavior: 'smooth'
                         });
-                    }, 500); // Match this duration with your CSS animation duration
+                    }, 500);
                 });
             });
             
@@ -499,10 +490,6 @@
                         
                         // Add fade-in animation to articles list
                         articlesList.classList.add('fade-in');
-                        
-                        // Reset hero section
-                        mainTitle.textContent = 'Cultivating Timeless Wisdom';
-                        mainSubtitle.textContent = 'Reflections and insights to nourish the mind and soul';
                         
                         // Remove animation classes after completion
                         setTimeout(() => {
@@ -532,10 +519,6 @@
                     // Switch views
                     articlesList.style.display = 'none';
                     articleDetails.style.display = 'block';
-                    
-                    // Update hero section
-                    mainTitle.textContent = document.querySelector(`#${articleId} .article-title`).textContent;
-                    mainSubtitle.textContent = 'Deep dive into wisdom';
                 }
             }
         });
