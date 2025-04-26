@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohammed Adan | Personal Blog</title>
+    <title>Your Blog Name</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,6 +38,7 @@
             color: var(--dark);
             line-height: 1.6;
             font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
         }
 
         h1, h2, h3, h4 {
@@ -315,6 +316,108 @@
             transform: translateX(3px);
         }
 
+        /* ====== ARTICLE SECTIONS ====== */
+        .article-section {
+            padding: 60px 0;
+            max-width: 800px;
+            margin: 0 auto;
+            display: none;
+        }
+
+        .article-section.active {
+            display: block;
+        }
+
+        .article-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .article-title {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--darker);
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            color: var(--gray);
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .article-image {
+            width: 100%;
+            height: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .article-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .article-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+
+        .article-content h2 {
+            font-size: 2rem;
+            margin: 40px 0 20px;
+            color: var(--darker);
+        }
+
+        .article-content h3 {
+            font-size: 1.5rem;
+            margin: 30px 0 15px;
+        }
+
+        .article-content blockquote {
+            border-left: 4px solid var(--primary);
+            padding-left: 20px;
+            margin: 30px 0;
+            font-style: italic;
+            color: var(--gray);
+        }
+
+        .article-content ul, 
+        .article-content ol {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        .article-content li {
+            margin-bottom: 10px;
+        }
+
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 50px;
+            transition: var(--transition);
+        }
+
+        .back-to-blog:hover {
+            color: var(--secondary);
+        }
+
         /* ====== ABOUT SECTION ====== */
         .about {
             background: linear-gradient(135deg, rgba(236, 72, 153, 0.05) 0%, rgba(79, 70, 229, 0.05) 100%);
@@ -512,6 +615,14 @@
                 grid-template-columns: 1fr;
             }
             
+            .article-title {
+                font-size: 2rem;
+            }
+            
+            .article-image {
+                height: 300px;
+            }
+            
             .newsletter-form {
                 flex-direction: column;
             }
@@ -548,6 +659,11 @@
             .hero p {
                 font-size: 1rem;
             }
+            
+            .article-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
     </style>
 </head>
@@ -556,9 +672,9 @@
     <header>
         <div class="container">
             <nav class="navbar">
-                <div class="logo">Mohammed<span>Adan</span></div>
+                <div class="logo">Your<span>Name</span></div>
                 <div class="nav-links">
-                    <a href="#">Home</a>
+                    <a href="#" class="home-link">Home</a>
                     <a href="#articles">Articles</a>
                     <a href="#about">About</a>
                     <a href="#contact">Contact</a>
@@ -571,9 +687,9 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Afkaaro, Qissooyin & Xikmado</h1>
-                <p>Ku soo dhawoow, halkaan waa page-kayga aan jeclahay inaan ku soo gudbiyo maqaallo faa’iido leh..</p>
-                <a href="#articles" class="hero-cta">Sahmi Maqaallada</a>
+                <h1>Your Blog Title</h1>
+                <p>A brief description of what your blog is about.</p>
+                <a href="#articles" class="hero-cta">Explore Articles</a>
             </div>
         </div>
     </section>
@@ -581,70 +697,153 @@
     <!-- ====== BLOG POSTS ====== -->
     <section id="articles" class="blog-posts section">
         <div class="container">
-            <h2 class="section-title">Maqaallada cusub</h2>
+            <h2 class="section-title">Latest Articles</h2>
             <div class="posts-grid">
                 <!-- Post 1 -->
                 <article class="post-card">
                     <div class="post-image">
-                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Blog post image">
+                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Article Image">
                     </div>
                     <div class="post-content">
                         <div class="post-meta">
-                            <span class="post-date"><i class="far fa-calendar"></i> June 15, 2023</span>
-                            <span class="post-category">Cilmi nafsi</span>
+                            <span class="post-date"><i class="far fa-calendar"></i> Month Day, Year</span>
+                            <span class="post-category">Category</span>
                         </div>
-                        <h3 class="post-title">IS OGAALKU WAA MUHIIM </h3>
-                        <p class="post-excerpt">Haddii aad rabto inaad naftaada horumariso, waa inaad marka hore naftaada fahamtaa. Waxaad akhrin kartaa buugaag badan oo horumarinta nafta ku saabsan, laakiin haddii aadan is-ogaal lahayn oo aadan garaneyn dabeecadahaaga.,.</p>
-                        <a href="/article1.html" class="read-more">Sii Akhri <i class="fas fa-arrow-right"></i></a>
+                        <h3 class="post-title">Your Article Title</h3>
+                        <p class="post-excerpt">A brief excerpt from your article that will entice readers to click through.</p>
+                        <a href="#article1" class="read-more article-link" data-article="article1">Read More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </article>
 
                 <!-- Post 2 -->
                 <article class="post-card">
                     <div class="post-image">
-                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Blog post image">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Article Image">
                     </div>
                     <div class="post-content">
                         <div class="post-meta">
-                            <span class="post-date"><i class="far fa-calendar"></i> June 10, 2023</span>
-                            <span class="post-category">Productivity</span>
+                            <span class="post-date"><i class="far fa-calendar"></i> Month Day, Year</span>
+                            <span class="post-category">Category</span>
                         </div>
-                        <h3 class="post-title">Mastering the Art of Deep Work</h3>
-                        <p class="post-excerpt">Practical strategies to eliminate distractions and achieve a state of flow in your work to produce your best output in less time.</p>
-                        <a href="/article2.html" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        <h3 class="post-title">Your Article Title</h3>
+                        <p class="post-excerpt">A brief excerpt from your article that will entice readers to click through.</p>
+                        <a href="#article2" class="read-more article-link" data-article="article2">Read More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </article>
 
                 <!-- Post 3 -->
                 <article class="post-card">
                     <div class="post-image">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Blog post image">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Article Image">
                     </div>
                     <div class="post-content">
                         <div class="post-meta">
-                            <span class="post-date"><i class="far fa-calendar"></i> June 5, 2023</span>
-                            <span class="post-category">Design</span>
+                            <span class="post-date"><i class="far fa-calendar"></i> Month Day, Year</span>
+                            <span class="post-category">Category</span>
                         </div>
-                        <h3 class="post-title">Principles of Minimalist Design</h3>
-                        <p class="post-excerpt">How to apply minimalist design principles to create clean, functional, and beautiful interfaces that enhance user experience.</p>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                        <h3 class="post-title">Your Article Title</h3>
+                        <p class="post-excerpt">A brief excerpt from your article that will entice readers to click through.</p>
+                        <a href="#article3" class="read-more article-link" data-article="article3">Read More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== ARTICLE SECTIONS ====== -->
+    <!-- Article 1 -->
+    <section id="article1" class="article-section">
+        <div class="container">
+            <div class="article-header">
+                <span class="article-category">Category</span>
+                <h1 class="article-title">Your Article Title</h1>
+                <div class="article-meta">
+                    <span><i class="far fa-calendar"></i> Month Day, Year</span>
+                    <span><i class="far fa-clock"></i> X min read</span>
+                </div>
+            </div>
+
+            <div class="article-image">
+                <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Article Image">
+            </div>
+
+            <div class="article-content">
+                <!-- Your article content goes here -->
+                <p>Start writing your article here...</p>
                 
-                                <!-- Post 3 -->
-                <article class="post-card">
-                    <div class="post-image">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Blog post image">
-                    </div>
-                    <div class="post-content">
-                        <div class="post-meta">
-                            <span class="post-date"><i class="far fa-calendar"></i> June 5, 2023</span>
-                            <span class="post-category">Design</span>
-                        </div>
-                        <h3 class="post-title">Principles of Minimalist Design</h3>
-                        <p class="post-excerpt">How to apply minimalist design principles to create clean, functional, and beautiful interfaces that enhance user experience.</p>
-                        <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
-                    </div>
+                <h2>Section Heading</h2>
+                <p>More content...</p>
+                
+                <h3>Subsection Heading</h3>
+                <p>Additional content...</p>
+                
+                <blockquote>
+                    An important quote or highlight from your article.
+                </blockquote>
+                
+                <ul>
+                    <li>List item 1</li>
+                    <li>List item 2</li>
+                    <li>List item 3</li>
+                </ul>
+
+                <a href="#" class="back-to-blog home-link"><i class="fas fa-arrow-left"></i> Back to all articles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article 2 -->
+    <section id="article2" class="article-section">
+        <div class="container">
+            <div class="article-header">
+                <span class="article-category">Category</span>
+                <h1 class="article-title">Your Article Title</h1>
+                <div class="article-meta">
+                    <span><i class="far fa-calendar"></i> Month Day, Year</span>
+                    <span><i class="far fa-clock"></i> X min read</span>
+                </div>
+            </div>
+
+            <div class="article-image">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Article Image">
+            </div>
+
+            <div class="article-content">
+                <!-- Your article content goes here -->
+                <p>Start writing your article here...</p>
+                
+                <h2>Section Heading</h2>
+                <p>More content...</p>
+
+                <a href="#" class="back-to-blog home-link"><i class="fas fa-arrow-left"></i> Back to all articles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article 3 -->
+    <section id="article3" class="article-section">
+        <div class="container">
+            <div class="article-header">
+                <span class="article-category">Category</span>
+                <h1 class="article-title">Your Article Title</h1>
+                <div class="article-meta">
+                    <span><i class="far fa-calendar"></i> Month Day, Year</span>
+                    <span><i class="far fa-clock"></i> X min read</span>
+                </div>
+            </div>
+
+            <div class="article-image">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Article Image">
+            </div>
+
+            <div class="article-content">
+                <!-- Your article content goes here -->
+                <p>Start writing your article here...</p>
+                
+                <h2>Section Heading</h2>
+                <p>More content...</p>
+
+                <a href="#" class="back-to-blog home-link"><i class="fas fa-arrow-left"></i> Back to all articles</a>
             </div>
         </div>
     </section>
@@ -654,13 +853,13 @@
         <div class="container">
             <div class="about-content">
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Mohammed Adan">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Your Name">
                 </div>
                 <div class="about-text">
                     <h2 class="section-title">About Me</h2>
-                    <p>Hello, I'm Mohammed Adan, a passionate web developer and designer with over 5 years of experience creating digital experiences that matter.</p>
-                    <p>I started this blog to share my knowledge, document my learning journey, and connect with like-minded individuals in the tech community.</p>
-                    <p>When I'm not coding, you can find me reading books, exploring new technologies, or enjoying a good cup of coffee.</p>
+                    <p>Hello, I'm [Your Name], a passionate [your profession/interest] with experience in [your expertise].</p>
+                    <p>I started this blog to share my knowledge and experiences about [your blog topics].</p>
+                    <p>When I'm not [your main activity], you can find me [your hobbies/interests].</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-github"></i></a>
@@ -689,13 +888,13 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3>Mohammed Adan</h3>
-                    <p>A personal blog sharing thoughts on technology, design, productivity, and life lessons.</p>
+                    <h3>Your Name</h3>
+                    <p>A personal blog sharing thoughts on [your topics].</p>
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Home</a></li>
+                        <li><a href="#" class="home-link">Home</a></li>
                         <li><a href="#articles">Articles</a></li>
                         <li><a href="#about">About</a></li>
                         <li><a href="#contact">Contact</a></li>
@@ -704,25 +903,99 @@
                 <div class="footer-column">
                     <h3>Categories</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Technology</a></li>
-                        <li><a href="#">Design</a></li>
-                        <li><a href="#">Productivity</a></li>
-                        <li><a href="#">Life</a></li>
+                        <li><a href="#">Category 1</a></li>
+                        <li><a href="#">Category 2</a></li>
+                        <li><a href="#">Category 3</a></li>
+                        <li><a href="#">Category 4</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Contact</h3>
                     <ul class="footer-links">
-                        <li><a href="mailto:hello@mohammedadan.com">hello@mohammedadan.com</a></li>
+                        <li><a href="mailto:your@email.com">your@email.com</a></li>
                         <li><a href="#">Twitter</a></li>
                         <li><a href="#">LinkedIn</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Mohammed Adan. All rights reserved.</p>
+                <p>&copy; 2023 Your Name. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Show/hide article sections
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all article links
+            const articleLinks = document.querySelectorAll('.article-link');
+            const homeLinks = document.querySelectorAll('.home-link');
+            const articleSections = document.querySelectorAll('.article-section');
+            
+            // Hide all article sections initially
+            articleSections.forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Handle article link clicks
+            articleLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const articleId = this.getAttribute('data-article');
+                    
+                    // Hide all articles
+                    articleSections.forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    
+                    // Show the selected article
+                    document.getElementById(articleId).style.display = 'block';
+                    
+                    // Scroll to the article
+                    document.getElementById(articleId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Handle home link clicks
+            homeLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Hide all articles
+                    articleSections.forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    
+                    // Scroll to top
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Check URL hash on load
+            if (window.location.hash) {
+                const articleId = window.location.hash.substring(1);
+                const article = document.getElementById(articleId);
+                if (article && article.classList.contains('article-section')) {
+                    // Hide all articles
+                    articleSections.forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    
+                    // Show the requested article
+                    article.style.display = 'block';
+                    
+                    // Scroll to the article
+                    setTimeout(() => {
+                        article.scrollIntoView();
+                    }, 100);
+                }
+            }
+        });
+    </script>
 </body>
-    </html>
+</html>
