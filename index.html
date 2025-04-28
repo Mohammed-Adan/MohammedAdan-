@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="description" content="Reys Aqoon waa madal lagu barto maqaallo faa'iido leh oo ku saabsan nolosha, aqoonta iyo horumarka shakhsiga.">
+    <meta name="keywords" content="Aqoon, Maqaallo, Horumar, Nolosha, Reys Aqoon">
+    <meta name="author" content="Mohamed Adan">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>REYS AQOON</title>
@@ -23,7 +26,6 @@
             --transition: all 0.3s ease;
         }
 
-        /* Dark mode variables */
         .dark-mode {
             --primary: #7F9CF5;
             --primary-light: #A3BFFA;
@@ -64,7 +66,6 @@
             padding: 0 20px;
         }
 
-        /* Header */
         header {
             background: var(--lighter);
             box-shadow: var(--shadow-sm);
@@ -74,7 +75,19 @@
             padding: 25px 0;
             transition: background-color 0.3s ease;
         }
-
+.stars {
+  font-size: 24px;
+  color: var(--light-gray);
+  margin: 10px 0;
+}
+.star {
+  cursor: pointer;
+  transition: color 0.2s;
+}
+.star:hover,
+.star.active {
+  color: var(--secondary);
+}
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -93,7 +106,6 @@
             color: var(--secondary);
         }
 
-        /* Dark mode toggle */
         .dark-mode-toggle {
             background: transparent;
             border: none;
@@ -107,14 +119,13 @@
             transform: scale(1.1);
         }
 
-        /* Buttons */
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 24px;
-            border-radius: 50px;
-            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: 59px;
+            font-weight: 500;
             text-decoration: none;
             transition: var(--transition);
             font-family: 'Montserrat', sans-serif;
@@ -122,7 +133,40 @@
             overflow: hidden;
             border: none;
         }
+.mobile-menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--dark);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
 
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .nav-links {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: var(--lighter);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 15px;
+        box-shadow: var(--shadow-md);
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+        z-index: 99;
+    }
+    
+    .nav-links.active {
+        transform: translateY(0);
+    }
+}
         .btn-primary {
             background: var(--primary);
             color: white;
@@ -165,12 +209,11 @@
             box-shadow: 0 6px 20px rgba(94, 114, 228, 0.2);
         }
 
-        /* Hero */
         .hero {
             background: linear-gradient(135deg, rgba(94, 114, 228, 0.1) 0%, rgba(245, 54, 92, 0.1) 100%);
             padding: 80px 0;
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
             transition: background 0.3s ease;
         }
 
@@ -192,7 +235,6 @@
             margin: 0 auto 30px;
         }
 
-        /* Articles */
         .articles {
             padding-bottom: 60px;
         }
@@ -202,7 +244,7 @@
             border-radius: 12px;
             overflow: hidden;
             box-shadow: var(--shadow-md);
-            margin-bottom: 50px;
+            margin-bottom: 30px;
             transition: var(--transition);
         }
 
@@ -213,7 +255,7 @@
 
         .article-image {
             width: 100%;
-            height: 300px;
+            height: 400px;
             object-fit: cover;
             transition: var(--transition);
         }
@@ -253,7 +295,6 @@
             margin-top: 20px;
         }
 
-        /* Article Detail Views */
         .article-detail {
             display: none;
             background: var(--lighter);
@@ -325,7 +366,6 @@
             margin-top: 40px;
         }
 
-        /* Animation classes */
         .fade-out {
             animation: fadeOut 0.5s ease forwards;
         }
@@ -344,19 +384,24 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Footer */
         footer {
             background: var(--darker);
             color: var(--light);
-            padding: 40px 0;
+            padding: 30px 0;
             text-align: center;
-            transition: background-color 0.3s ease;
         }
 
         .footer-logo {
             font-size: 1.5rem;
-            margin-bottom: 20px;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            margin-bottom: 10px;
             display: inline-block;
+        }
+
+        .footer-logo span {
+            color: var(--secondary);
         }
 
         .copyright {
@@ -364,7 +409,6 @@
             font-size: 0.9rem;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.2rem;
@@ -398,6 +442,7 @@
 <body>
     <!-- Header -->
     <header>
+      <div id="greeting"></div>
         <div class="container">
             <nav class="navbar">
                 <a href="#" class="logo">REYS<span>AQOON</span></a>
@@ -408,45 +453,45 @@
         </div>
     </header>
 
-    <!-- Hero (will be hidden when viewing article) -->
+    <!-- Hero Section -->
     <section class="hero" id="heroSection">
         <div class="container">
             <h1 id="mainTitle">REYS AQOON</h1>
-            <p id="mainSubtitle">waa madal loogu tala galay in lagu gudbiyo, maqaallo faa'iido leh</p>
+            <p id="mainSubtitle">waa <strong>madal</strong> loogu tala galay in lagu gudbiyo maqaallo faa'iido leh</p>
         </div>
     </section>
 
-    <!-- Articles List -->
+    <!-- Articles List -  -->
     <main class="articles" id="articlesList">
         <div class="container">
-            <!-- Article 1 Preview -->
-            <article class="article-preview" data-article="article1">
-                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Wisdom illustration" class="article-image">
+            <!-- ===== ARTICLE TEMPLATE PREVIEW ===== -->
+            <!-- COPY THIS TO ADD NEW ARTICLES -->
+            <article class="article-preview" data-article="template-article">
+                <img src="/Picture/default-image.jpg" class="article-image" alt="Article image">
                 <div class="article-preview-content">
                     <div class="article-date">
-                        <i class="far fa-calendar"></i> June 15, 2023
+                        <i class="far fa-calendar"></i> <span class="date">Month Day, Year</span>
                     </div>
-                    <h2 class="article-title">Qabatinka Internetka iyo Cawaaqibkiisa</h2>
-                    <p class="article-excerpt">Qabatinka internetku waxa uu keenaa in uu qofku metelo qofnimo khiyaali ah oo uu ka helo internet ka dhexdiisa, taas oo u sawirta in uu helayo waxyaabihii noloshiisa caadiga ahayd ka dhinaa..</p>
+                    <h2 class="article-title">Your Article Title Here</h2>
+                    <p class="article-excerpt">Brief description of your article content...</p>
                     <div class="read-more-container">
-                        <a href="#article1" class="btn btn-primary read-more-btn">
+                        <a href="#template-article" class="btn btn-primary read-more-btn">
                             <i class="fas fa-book-open"></i> Akhri wax badan
                         </a>
                     </div>
                 </div>
             </article>
-
-            <!-- NEW ARTICLE 2 PREVIEW -->
-            <article class="article-preview" data-article="article2">
-                <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Mind illustration" class="article-image">
+            <!-- ===== END TEMPLATE ===== -->
+             <article class="article-preview" data-article="template-article">
+                <img src="/Picture/default-image.jpg" class="article-image" alt="Article image">
                 <div class="article-preview-content">
                     <div class="article-date">
-                        <i class="far fa-calendar"></i> July 25, 2023
+                        <i class="far fa-calendar"></i> <span class="date">Month Day, Year</span>
                     </div>
-                    <h2 class="article-title">Sida Loo Xakameeyo Walbahaarka Maskaxda</h2>
-                    <p class="article-excerpt">Walbahaarka maskaxdu waa dhibaato badan oo ay qabaan qofka, laakiin waxaa jira habab looga hortagi karo...</p>
+                    <h2 class="article-title">Your Article Title Here</h2>
+                    <p class="article-excerpt">Brief description of your article content...</p>
                     <div class="read-more-container">
-                        <a href="#article2" class="btn btn-primary read-more-btn">
+                        <a href="#template-article" class="btn btn-primary read-more-btn">
                             <i class="fas fa-book-open"></i> Akhri wax badan
                         </a>
                     </div>
@@ -455,104 +500,69 @@
         </div>
     </main>
 
-    <!-- Article Detail Views -->
+    <!-- <div class="search-container">
+  <input type="text" id="searchInput" placeholder="Raadi maqaal...">
+  <button id="searchBtn"><i class="fas fa-search"></i></button>
+</div>cle Details - Only Template Article -->
     <div id="articleDetails">
         <div class="container">
-            <!-- Article 1 Detail -->
-            <article class="article-detail" id="article1">
-                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Wisdom illustration" class="article-image">
+            <!-- ===== ARTICLE TEMPLATE DETAIL ===== -->
+            <!-- COPY THIS TO ADD NEW ARTICLES -->
+            <article class="article-detail" id="template-article">
+                <img src="/Picture/default-image.jpg" class="article-image" alt="Article image">
                 <div class="article-content">
                     <div class="article-date">
-                        <i class="far fa-calendar"></i> June 15, 2023
+                        <i class="far fa-calendar"></i> <span class="date">Month Day, Year</span>
                     </div>
-                    <h1 class="article-title">Qabatinka Internetka iyo Cawaaqibkiisa</h1>
+                    <h1 class="article-title">Your Full Article Title Here</h1>
                     <div class="article-text">
-                        <p>
-                            Qabatinka internetku waxa uu keenaa in uu qofku metelo qofnimo khiyaali ah oo uu ka helo internet ka dhexdiisa, taas oo u sawirta in uu helayo waxyaabihii noloshiisa caadiga ahayd ka dhinaa.
-                        </p>
-
-                        <h3>Maxaa Sababa?</h3>
+                        <p>Start writing your article content here. This is where you put the main content of your article.</p>
+                        
+                        <h3>Subheading Example</h3>
+                        <p>More detailed content can go under subheadings like this one.</p>
+                        
                         <ul>
-                            <li><strong>Faaruq nafsaani ah:</strong> (emotional emptiness)</li>
-                            <li><strong>Xanuun nololeed:</strong> sida saboolnimo, kalinimo, ama fashil.</li>
-                            <li><strong>Rajo been ah:</strong> Inuu ku helo qaddarin, jacayl, ama nolol wanaagsan isagoo matalaya qof kale oo khiyaali ah.</li>
+                            <li>Example bullet point 1</li>
+                            <li>Example bullet point 2</li>
+                            <li>Example bullet point 3</li>
                         </ul>
-
-                        <h3>Cawaaqibka & Khatarta Ka Dhalan Karta</h3>
-                        <ul>
-                            <li><strong>Kala fogaanshaha nafta dhabta ah:</strong> Qofku wuu ilaawaa cidda uu yahay.</li>
-                            <li><strong>Xanuun nafsaani ah:</strong> Murugo, niyad jab, iyo dareen aan jirin ama aan la aqoonsaneyn.</li>
-                            <li><strong>Kalsooni lumis:</strong> Isagoo ka baqaya in la ogaado inuu yahay qof kale.</li>
-                            <li><strong>Furitaano khataro badan leh:</strong> sida xiriir been ah, khiyaano, lacag lumin, iyo qalbi jab.</li>
-                        </ul>
-
-                        <h3>Xalka</h3>
-                        <ul>
-                            <li><strong>Xadid</strong> waqtiga aad ku qaadato internetka.</li>
-                            <li><strong>Aqbasho</strong> naftaada sida ay tahay: Dhib ma aha inaad leedahay cillado iyo daciifnimo.</li>
-                            <li><strong>Dib ugu laabo Xagga Alle:</strong> Nolosha xaqiiqda ah waxaa lagu xasiliyaa xusuusta Alle iyo ka fogaanshaha khiyaaliga.</li>
-                            <li><strong>La hadal naftaada si daacad ah:</strong> Weydii naftaada: "Maxaan ka cararayaa? Maxaan ka qarinayaa?"</li>
-                        </ul>
+                        
+                        <blockquote>
+                            "This is an example of a highlighted quote or important point from your article."
+                        </blockquote>
+                        
+                        <p>You can continue writing more paragraphs as needed.</p>
+                        
                     </div>
+                    <div class="rating-container">
+  <p>Maqaalkan miyuu kuu caawiyay?</p>
+  <div class="stars">
+    <span class="star" data-rating="1">★</span>
+    <span class="star" data-rating="2">★</span>
+    <span class="star" data-rating="3">★</span>
+    <span class="star" data-rating="4">★</span>
+    <span class="star" data-rating="5">★</span>
+  </div>
+  <p id="ratingFeedback"></p>
+</div>
+                    
                     <div class="back-home-container">
                         <a href="#" class="btn btn-outline back-home-btn">
                             <i class="fas fa-arrow-left"></i> Dib ugu laabo
                         </a>
                     </div>
                 </div>
+                
             </article>
-
-            <!-- NEW ARTICLE 2 DETAIL -->
-            <article class="article-detail" id="article2">
-                <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="Mind illustration" class="article-image">
-                <div class="article-content">
-                    <div class="article-date">
-                        <i class="far fa-calendar"></i> July 25, 2023
-                    </div>
-                    <h1 class="article-title">IS OGAALKU WAA MUHIIM</h1>
-                    <div class="article-text">
-                        <p>
-                            Walbahaarka maskaxdu waa dhibaato badan oo ay qabaan qofka, gaar ahaan marka ay noqdaan mid aan la xakameyn karin. Waxaa laga yaabaa inay keenaan xaalado adag oo nafeed ah.
-                        </p>
-
-                        <h3>Sababaha Walbahaarka</h3>
-                        <ul>
-                            <li><strong>Dhibaatooyinka nolosha:</strong> Shaqo la'aan, qoys dhibaato, ama xiriir xumo.</li>
-                            <li><strong>Xusuusyo naxdin leh:</strong> Waxyaabihii hore ee laga yaabay.</li>
-                            <li><strong>Is-beddelka hormoonka:</strong> Sabab ay noqon karaan isbeddelka jirka.</li>
-                        </ul>
-
-                        <h3>Sida Loo Xakameeyo</h3>
-                        <ul>
-                            <li><strong>La hadal qof aqoon u leh:</strong> Ka warran dhakhtar ama saxafi.</li>
-                            <li><strong>Samee jimicsi:</strong> Jimicsiga wuxuu kaa caawin karaa inaad neefsato si fiican.</li>
-                            <li><strong>Cunto wanaagsan:</strong> Cun nooc kasta oo cuntooyin nafaqo leh.</li>
-                            <li><strong>Seexo si fiican:</strong> Ugu talo gal inaad seexato 7-8 saacadood maalinti.</li>
-                            <li><strong>Ka fogow wax walbahaarsan:</strong> Tusaale ahaan, haddii shaygu kaa walbahaaro, iska fogaado.</li>
-                        </ul>
-
-                        <h3>Waxyaabo Wanaagsan oo Laga Heli Karaa</h3>
-                        <ul>
-                            <li>Xasilooni nafeed oo ka badan.</li>
-                            <li>Helitaanka rajo cusub.</li>
-                            <li>Xiriir wanaagsan oo la leeyahay dadka kale.</li>
-                        </ul>
-                    </div>
-                    <div class="back-home-container">
-                        <a href="#" class="btn btn-outline back-home-btn">
-                            <i class="fas fa-arrow-left"></i> Dib ugu laabo
-                        </a>
-                    </div>
-                </div>
-            </article>
+            <!-- ===== END TEMPLATE ===== -->
         </div>
     </div>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-logo">REYS<span>AQOON</span></div>
-            <p class="copyright">© 2023 REYS AQOON. All rights reserved.</p>
+            <a href="#" class="footer-logo">REYS<span>AQOON</span></a>
+            <p class="copyright">© 2025 REYS AQOON. Dhammaan xuquuqda qoraalka way dhawran.</p>
         </div>
     </footer>
 
@@ -695,6 +705,42 @@
                 }
             }
         });
+    </script>
+    
+    <script >
+      
+    </script>
+    <script >
+      
+      document.querySelectorAll('.star').forEach(star => {
+  star.addEventListener('click', function() {
+    const rating = this.dataset.rating;
+    
+    // Highlight stars
+    document.querySelectorAll('.star').forEach(s => {
+      s.classList.toggle('active', s.dataset.rating <= rating);
+    });
+    
+    // Send to localStorage
+    localStorage.setItem(`rated_${window.location.pathname}`, rating);
+    
+    // Show feedback
+    const feedback = [
+      "Waan ka xumahay!",
+      "Mahadsanid!",
+      "Waad ku mahadsan tahay!",
+      "Aad baad u mahadsan tahay!",
+      "Waan ku faraxsanahay!"
+    ];
+    document.getElementById('ratingFeedback').textContent = feedback[rating-1];
+  });
+  
+  // Load previous rating
+  const savedRating = localStorage.getItem(`rated_${window.location.pathname}`);
+  if (savedRating && star.dataset.rating <= savedRating) {
+    star.classList.add('active');
+  }
+});
     </script>
 </body>
 </html>
