@@ -1,746 +1,914 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="description" content="Reys Aqoon waa madal lagu barto maqaallo faa'iido leh oo ku saabsan nolosha, aqoonta iyo horumarka shakhsiga.">
-    <meta name="keywords" content="Aqoon, Maqaallo, Horumar, Nolosha, Reys Aqoon">
-    <meta name="author" content="Mohamed Adan">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REYS AQOON</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #5E72E4;
-            --primary-light: #8293FF;
-            --secondary: #F5365C;
-            --dark: #2D3748;
-            --darker: #1A202C;
-            --light: #F7FAFC;
-            --lighter: #FFFFFF;
-            --gray: #718096;
-            --light-gray: #E2E8F0;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-
-        .dark-mode {
-            --primary: #7F9CF5;
-            --primary-light: #A3BFFA;
-            --secondary: #FC8181;
-            --dark: #E2E8F0;
-            --darker: #F7FAFC;
-            --light: #1A202C;
-            --lighter: #2D3748;
-            --gray: #A0AEC0;
-            --light-gray: #4A5568;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
-            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Merriweather', serif;
-            color: var(--dark);
-            background-color: var(--light);
-            line-height: 1.7;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        h1, h2, h3 {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        header {
-            background: var(--lighter);
-            box-shadow: var(--shadow-sm);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            padding: 25px 0;
-            transition: background-color 0.3s ease;
-        }
-.stars {
-  font-size: 24px;
-  color: var(--light-gray);
-  margin: 10px 0;
-}
-.star {
-  cursor: pointer;
-  transition: color 0.2s;
-}
-.star:hover,
-.star.active {
-  color: var(--secondary);
-}
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .logo span {
-            color: var(--secondary);
-        }
-
-        .dark-mode-toggle {
-            background: transparent;
-            border: none;
-            color: var(--dark);
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: transform 0.3s ease;
-        }
-
-        .dark-mode-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 12px 20px;
-            border-radius: 59px;
-            font-weight: 500;
-            text-decoration: none;
-            transition: var(--transition);
-            font-family: 'Montserrat', sans-serif;
-            position: relative;
-            overflow: hidden;
-            border: none;
-        }
-.mobile-menu-toggle {
-    display: none;
-    background: transparent;
-    border: none;
-    color: var(--dark);
-    font-size: 1.5rem;
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta name="description" content="Reys Aqoon waa madal lagu barto maqaallo faa'iido leh oo ku saabsan nolosha, aqoonta iyo horumarka shakhsiga.">
+      <meta name="keywords" content="Aqoon, Maqaallo, Horumar, Nolosha, Reys Aqoon">
+      <meta name="author" content="Mohamed Adan">
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>REYS AQOON</title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+      <style>
+          :root {
+              --primary: #5E72E4;
+              --primary-light: #8293FF;
+              --secondary: #F5365C;
+              --dark: #2D3748;
+              --darker: #1A202C;
+              --light: #F7FAFC;
+              --lighter: #FFFFFF;
+              --gray: #718096;
+              --light-gray: #E2E8F0;
+              --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+              --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+              --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+              --transition: all 0.3s ease;
+          }
+  
+          .dark-mode {
+              --primary: #7F9CF5;
+              --primary-light: #A3BFFA;
+              --secondary: #FC8181;
+              --dark: #E2E8F0;
+              --darker: #F7FAFC;
+              --light: #1A202C;
+              --lighter: #2D3748;
+              --gray: #A0AEC0;
+              --light-gray: #4A5568;
+              --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+              --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+              --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
+          }
+  
+          * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+          }
+  
+          body {
+              font-family: 'Merriweather', serif;
+              color: var(--dark);
+              background-color: var(--light);
+              line-height: 1.7;
+              transition: background-color 0.3s ease, color 0.3s ease;
+          }
+  
+          h1, h2, h3 {
+              font-family: 'Montserrat', sans-serif;
+              font-weight: 600;
+          }
+  
+          .container {
+              max-width: 800px;
+              margin: 0 auto;
+              padding: 0 20px;
+          }
+  
+          header {
+              background: var(--lighter);
+              box-shadow: var(--shadow-sm);
+              position: sticky;
+              top: 0;
+              z-index: 100;
+              padding: 25px 0;
+              transition: background-color 0.3s ease;
+          }
+  .stars {
+    font-size: 24px;
+    color: var(--light-gray);
+    margin: 10px 0;
+  }
+  .star {
     cursor: pointer;
+    transition: color 0.2s;
+  }
+  .star:hover,
+  .star.active {
+    color: var(--secondary);
+  }
+          .navbar {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+          }
+  
+          .logo {
+              font-size: 1.8rem;
+              font-weight: 700;
+              color: var(--primary);
+              text-decoration: none;
+              font-family: 'Montserrat', sans-serif;
+          }
+  
+          .logo span {
+              color: var(--secondary);
+          }
+  
+          .dark-mode-toggle {
+              background: transparent;
+              border: none;
+              color: var(--dark);
+              cursor: pointer;
+              font-size: 1.2rem;
+              transition: transform 0.3s ease;
+          }
+  
+          .dark-mode-toggle:hover {
+              transform: scale(1.1);
+          }
+  
+          .btn {
+              display: inline-flex;
+              align-items: center;
+              gap: 8px;
+              padding: 12px 20px;
+              border-radius: 59px;
+              font-weight: 500;
+              text-decoration: none;
+              transition: var(--transition);
+              font-family: 'Montserrat', sans-serif;
+              position: relative;
+              overflow: hidden;
+              border: none;
+          }
+  .mobile-menu-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: var(--dark);
+      font-size: 1.5rem;
+      cursor: pointer;
+  }
+  
+  @media (max-width: 768px) {
+      .mobile-menu-toggle {
+          display: block;
+      }
+      
+      .nav-links {
+          position: fixed;
+          top: 80px;
+          left: 0;
+          width: 100%;
+          background: var(--lighter);
+          flex-direction: column;
+          align-items: center;
+          padding: 20px 0;
+          gap: 15px;
+          box-shadow: var(--shadow-md);
+          transform: translateY(-150%);
+          transition: transform 0.3s ease;
+          z-index: 99;
+      }
+      
+      .nav-links.active {
+          transform: translateY(0);
+      }
+  }
+          .btn-primary {
+              background: var(--primary);
+              color: white;
+              box-shadow: 0 4px 12px rgba(94, 114, 228, 0.25);
+              z-index: 1;
+          }
+  
+          .btn-primary:hover {
+              transform: translateY(-3px);
+              box-shadow: 0 6px 20px rgba(94, 114, 228, 0.4);
+          }
+  
+          .btn-primary::before {
+              content: '';
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: linear-gradient(to right, var(--primary), var(--primary-light));
+              opacity: 0;
+              transition: var(--transition);
+              z-index: -1;
+          }
+  
+          .btn-primary:hover::before {
+              opacity: 1;
+          }
+  
+          .btn-outline {
+              border: 2px solid var(--primary);
+              color: var(--primary);
+              background: transparent;
+          }
+  
+          .btn-outline:hover {
+              background: var(--primary);
+              color: white;
+              transform: translateY(-3px);
+              box-shadow: 0 6px 20px rgba(94, 114, 228, 0.2);
+          }
+  
+          .hero {
+              background: linear-gradient(135deg, rgba(94, 114, 228, 0.1) 0%, rgba(245, 54, 92, 0.1) 100%);
+              padding: 80px 0;
+              text-align: center;
+              margin-bottom: 50px;
+              transition: background 0.3s ease;
+          }
+  
+          .dark-mode .hero {
+              background: linear-gradient(135deg, rgba(94, 114, 228, 0.2) 0%, rgba(245, 54, 92, 0.2) 100%);
+          }
+  
+          .hero h1 {
+              font-size: 2.8rem;
+              margin-bottom: 20px;
+              color: var(--darker);
+              line-height: 1.2;
+          }
+  
+          .hero p {
+              font-size: 1.2rem;
+              color: var(--gray);
+              max-width: 600px;
+              margin: 0 auto 30px;
+          }
+  
+          .articles {
+              padding-bottom: 60px;
+          }
+  
+          .article-preview {
+              background: var(--lighter);
+              border-radius: 12px;
+              overflow: hidden;
+              box-shadow: var(--shadow-md);
+              margin-bottom: 30px;
+              transition: var(--transition);
+          }
+  
+          .article-preview:hover {
+              transform: translateY(-5px);
+              box-shadow: var(--shadow-lg);
+          }
+  
+          .article-image {
+              width: 100%;
+              height: 400px;
+              object-fit: cover;
+              transition: var(--transition);
+          }
+  
+          .article-preview:hover .article-image {
+              transform: scale(1.02);
+          }
+  
+          .article-preview-content {
+              padding: 30px;
+          }
+  
+          .article-date {
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              color: var(--gray);
+              font-size: 0.9rem;
+              margin-bottom: 15px;
+          }
+  
+          .article-title {
+              font-size: 2rem;
+              margin-bottom: 20px;
+              color: var(--darker);
+              line-height: 1.3;
+          }
+  
+          .article-excerpt {
+              font-size: 1.1rem;
+              color: var(--dark);
+              margin-bottom: 25px;
+          }
+          /* Straight Line Footer */
+.footer-line {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
 }
 
-@media (max-width: 768px) {
-    .mobile-menu-toggle {
-        display: block;
-    }
-    
-    .nav-links {
-        position: fixed;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        background: var(--lighter);
-        flex-direction: column;
-        align-items: center;
-        padding: 20px 0;
-        gap: 15px;
-        box-shadow: var(--shadow-md);
-        transform: translateY(-150%);
-        transition: transform 0.3s ease;
-        z-index: 99;
-    }
-    
-    .nav-links.active {
-        transform: translateY(0);
-    }
+.footer-contact-link {
+    color: var(--light);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition);
 }
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 4px 12px rgba(94, 114, 228, 0.25);
-            z-index: 1;
-        }
 
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(94, 114, 228, 0.4);
-        }
+.footer-contact-link:hover {
+    color: var(--primary-light);
+}
 
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to right, var(--primary), var(--primary-light));
-            opacity: 0;
-            transition: var(--transition);
-            z-index: -1;
-        }
+.footer-separator {
+    color: var(--gray);
+    opacity: 0.5;
+}
 
-        .btn-primary:hover::before {
-            opacity: 1;
-        }
+.copyright {
+    text-align: center;
+    color: var(--gray);
+    font-size: 0.9rem;
+}
 
-        .btn-outline {
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            background: transparent;
-        }
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+          .read-more-container {
+              text-align: center;
+              margin-top: 20px;
+          }
+  
+          .article-detail {
+              display: none;
+              background: var(--lighter);
+              border-radius: 12px;
+              overflow: hidden;
+              box-shadow: var(--shadow-md);
+              margin-bottom: 50px;
+              opacity: 0;
+              transform: translateY(20px);
+              transition: opacity 0.5s ease, transform 0.5s ease;
+          }
+  
+          .article-detail.active {
+              opacity: 1;
+              transform: translateY(0);
+          }
+  
+          .article-content {
+              padding: 30px;
+          }
+  
+          .article-text {
+              font-size: 1.1rem;
+              color: var(--dark);
+              margin-bottom: 25px;
+          }
+  
+          .article-text p {
+              margin-bottom: 20px;
+          }
+  
+          .article-text h2 {
+              font-size: 1.6rem;
+              margin: 30px 0 15px;
+              color: var(--darker);
+          }
+  
+          .article-text h3 {
+              font-size: 1.3rem;
+              margin: 25px 0 10px;
+          }
+  /* Special Content Blocks */
+.warning-box {
+    background: rgba(245, 54, 92, 0.1);
+    border-left: 4px solid var(--secondary);
+    padding: 15px;
+    margin: 20px 0;
+    display: flex;
+    gap: 10px;
+}
 
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(94, 114, 228, 0.2);
-        }
+.example-box {
+    background: rgba(94, 114, 228, 0.1);
+    border-left: 4px solid var(--primary);
+    padding: 15px;
+    margin: 20px 0;
+}
 
-        .hero {
-            background: linear-gradient(135deg, rgba(94, 114, 228, 0.1) 0%, rgba(245, 54, 92, 0.1) 100%);
-            padding: 80px 0;
-            text-align: center;
-            margin-bottom: 50px;
-            transition: background 0.3s ease;
-        }
+.checklist {
+    list-style-type: none;
+    padding-left: 0;
+}
 
-        .dark-mode .hero {
-            background: linear-gradient(135deg, rgba(94, 114, 228, 0.2) 0%, rgba(245, 54, 92, 0.2) 100%);
-        }
+.checklist li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 10px;
+}
 
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 20px;
-            color: var(--darker);
-            line-height: 1.2;
-        }
+.checklist li:before {
+    content: "✓";
+    color: var(--primary);
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+}
 
-        .hero p {
-            font-size: 1.2rem;
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto 30px;
-        }
+/* Text Styles */
+.article-text blockquote {
+    font-size: 1.2rem;
+    background: rgba(94, 114, 228, 0.05);
+    padding: 20px;
+    border-radius: 8px;
+    font-style: italic;
+}
 
-        .articles {
-            padding-bottom: 60px;
-        }
+.article-text h2 {
+    color: var(--primary);
+    margin-top: 30px;
+}
+          .article-text ul, 
+          .article-text ol {
+              margin-bottom: 20px;
+              padding-left: 20px;
+          }
+  
+          .article-text li {
+              margin-bottom: 8px;
+          }
+  
+          .article-text blockquote {
+              border-left: 4px solid var(--primary);
+              padding-left: 20px;
+              margin: 25px 0;
+              font-style: italic;
+              color: var(--gray);
+              background: rgba(94, 114, 228, 0.05);
+              transition: background 0.3s ease;
+          }
+          /* Footer Grid Layout */
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
 
-        .article-preview {
-            background: var(--lighter);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            margin-bottom: 30px;
-            transition: var(--transition);
-        }
+.footer-col {
+    margin-bottom: 20px;
+}
 
-        .article-preview:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
+/* Footer Typography */
+.footer-heading {
+    color: var(--primary-light);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
 
-        .article-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            transition: var(--transition);
-        }
+.footer-tagline {
+    color: var(--gray);
+    margin-top: 10px;
+}
 
-        .article-preview:hover .article-image {
-            transform: scale(1.02);
-        }
+/* Footer Links */
+.footer-links {
+    list-style: none;
+}
 
-        .article-preview-content {
-            padding: 30px;
-        }
+.footer-link {
+    color: var(--light-gray);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    transition: var(--transition);
+}
 
-        .article-date {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--gray);
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
+.footer-link:hover {
+    color: var(--primary);
+    transform: translateX(5px);
+}
 
-        .article-title {
-            font-size: 2rem;
-            margin-bottom: 20px;
-            color: var(--darker);
-            line-height: 1.3;
-        }
+/* Footer Bottom */
+.footer-bottom {
+    border-top: 1px solid var(--light-gray);
+    padding-top: 20px;
+    text-align: center;
+}
+  
+          .dark-mode .article-text blockquote {
+              background: rgba(94, 114, 228, 0.1);
+          }
+  
+          .back-home-container {
+              text-align: center;
+              margin-top: 40px;
+          }
+  
+          .fade-out {
+              animation: fadeOut 0.5s ease forwards;
+          }
+  
+          .fade-in {
+              animation: fadeIn 0.5s ease forwards;
+          }
+  
+          @keyframes fadeOut {
+              from { opacity: 1; }
+              to { opacity: 0; transform: translateY(-20px); }
+          }
+  
+          @keyframes fadeIn {
+              from { opacity: 0; transform: translateY(20px); }
+              to { opacity: 1; transform: translateY(0); }
+          }
+  
+          footer {
+              background: var(--darker);
+              color: var(--light);
+              padding: 30px 0;
+              text-align: center;
+          }
+  
+          .footer-logo {
+              font-size: 1.5rem;
+              font-weight: 700;
+              color: var(--primary);
+              text-decoration: none;
+              margin-bottom: 10px;
+              display: inline-block;
+          }
+  
+          .footer-logo span {
+              color: var(--secondary);
+          }
+  
+          .copyright {
+              color: var(--light-gray);
+              font-size: 0.9rem;
+          }
+  
+          @media (max-width: 768px) {
+              .hero h1 {
+                  font-size: 2.2rem;
+              }
+              
+              .article-title {
+                  font-size: 1.7rem;
+              }
+              
+              .article-image {
+                  height: 250px;
+              }
+          }
+  
+          @media (max-width: 576px) {
+              .hero {
+                  padding: 60px 0;
+              }
+              
+              .hero h1 {
+                  font-size: 1.8rem;
+              }
+              
+              .article-content, 
+              .article-preview-content {
+                  padding: 25px;
+              }
+          }
+      </style>
+  </head>
+  <body>
+      <!-- Header -->
+      <header>
+        <div id="greeting"></div>
+          <div class="container">
+              <nav class="navbar">
+                  <a href="#" class="logo">REYS<span>AQOON</span></a>
+                  <button class="dark-mode-toggle" id="darkModeToggle">
+                      <i class="fas fa-moon"></i>
+                  </button>
+              </nav>
+          </div>
+      </header>
+  
+      <!-- Hero Section -->
+      <section class="hero" id="heroSection">
+          <div class="container">
+              <h1 id="mainTitle">REYS AQOON</h1>
+              <p id="mainSubtitle">waa <strong>madal</strong> loogu tala galay in lagu gudbiyo maqaallo faa'iido leh</p>
+          </div>
+      </section>
+  
+      <!-- Articles List -  -->
+      <main class="articles" id="articlesList">
+          <div class="container">
+              <!-- ===== ARTICLE TEMPLATE PREVIEW ===== -->
 
-        .article-excerpt {
-            font-size: 1.1rem;
-            color: var(--dark);
-            margin-bottom: 25px;
-        }
-
-        .read-more-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        .article-detail {
-            display: none;
-            background: var(--lighter);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            margin-bottom: 50px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .article-detail.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .article-content {
-            padding: 30px;
-        }
-
-        .article-text {
-            font-size: 1.1rem;
-            color: var(--dark);
-            margin-bottom: 25px;
-        }
-
-        .article-text p {
-            margin-bottom: 20px;
-        }
-
-        .article-text h2 {
-            font-size: 1.6rem;
-            margin: 30px 0 15px;
-            color: var(--darker);
-        }
-
-        .article-text h3 {
-            font-size: 1.3rem;
-            margin: 25px 0 10px;
-        }
-
-        .article-text ul, 
-        .article-text ol {
-            margin-bottom: 20px;
-            padding-left: 20px;
-        }
-
-        .article-text li {
-            margin-bottom: 8px;
-        }
-
-        .article-text blockquote {
-            border-left: 4px solid var(--primary);
-            padding-left: 20px;
-            margin: 25px 0;
-            font-style: italic;
-            color: var(--gray);
-            background: rgba(94, 114, 228, 0.05);
-            transition: background 0.3s ease;
-        }
-
-        .dark-mode .article-text blockquote {
-            background: rgba(94, 114, 228, 0.1);
-        }
-
-        .back-home-container {
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .fade-out {
-            animation: fadeOut 0.5s ease forwards;
-        }
-
-        .fade-in {
-            animation: fadeIn 0.5s ease forwards;
-        }
-
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; transform: translateY(-20px); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        footer {
-            background: var(--darker);
-            color: var(--light);
-            padding: 30px 0;
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-            margin-bottom: 10px;
-            display: inline-block;
-        }
-
-        .footer-logo span {
-            color: var(--secondary);
-        }
-
-        .copyright {
-            color: var(--light-gray);
-            font-size: 0.9rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .article-title {
-                font-size: 1.7rem;
-            }
-            
-            .article-image {
-                height: 250px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero {
-                padding: 60px 0;
-            }
-            
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-            
-            .article-content, 
-            .article-preview-content {
-                padding: 25px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <!-- Header -->
-    <header>
-      <div id="greeting"></div>
-        <div class="container">
-            <nav class="navbar">
-                <a href="#" class="logo">REYS<span>AQOON</span></a>
-                <button class="dark-mode-toggle" id="darkModeToggle">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="heroSection">
-        <div class="container">
-            <h1 id="mainTitle">REYS AQOON</h1>
-            <p id="mainSubtitle">waa <strong>madal</strong> loogu tala galay in lagu gudbiyo maqaallo faa'iido leh</p>
-        </div>
-    </section>
-
-    <!-- Articles List -  -->
-    <main class="articles" id="articlesList">
-        <div class="container">
-            <!-- ===== ARTICLE TEMPLATE PREVIEW ===== -->
-            <!-- COPY THIS TO ADD NEW ARTICLES -->
-            <article class="article-preview" data-article="template-article">
-                <img src="/Picture/default-image.jpg" class="article-image" alt="Article image">
-                <div class="article-preview-content">
-                    <div class="article-date">
-                        <i class="far fa-calendar"></i> <span class="date">Month Day, Year</span>
-                    </div>
-                    <h2 class="article-title">Your Article Title Here</h2>
-                    <p class="article-excerpt">Brief description of your article content...</p>
-                    <div class="read-more-container">
-                        <a href="#template-article" class="btn btn-primary read-more-btn">
-                            <i class="fas fa-book-open"></i> Akhri wax badan
-                        </a>
-                    </div>
-                </div>
-            </article>
-            <!-- ===== END TEMPLATE ===== -->
-             <article class="article-preview" data-article="template-article">
-                <img src="/Picture/default-image.jpg" class="article-image" alt="Article image">
-                <div class="article-preview-content">
-                    <div class="article-date">
-                        <i class="far fa-calendar"></i> <span class="date">Month Day, Year</span>
-                    </div>
-                    <h2 class="article-title">Your Article Title Here</h2>
-                    <p class="article-excerpt">Brief description of your article content...</p>
-                    <div class="read-more-container">
-                        <a href="#template-article" class="btn btn-primary read-more-btn">
-                            <i class="fas fa-book-open"></i> Akhri wax badan
-                        </a>
-                    </div>
-                </div>
-            </article>
-        </div>
-    </main>
-
-    <!-- <div class="search-container">
-  <input type="text" id="searchInput" placeholder="Raadi maqaal...">
-  <button id="searchBtn"><i class="fas fa-search"></i></button>
-</div>cle Details - Only Template Article -->
-    <div id="articleDetails">
-        <div class="container">
-            <!-- ===== ARTICLE TEMPLATE DETAIL ===== -->
-            <!-- COPY THIS TO ADD NEW ARTICLES -->
-            <article class="article-detail" id="template-article">
-                <img src="/Picture/default-image.jpg" class="article-image" alt="Article image">
-                <div class="article-content">
-                    <div class="article-date">
-                        <i class="far fa-calendar"></i> <span class="date">Month Day, Year</span>
-                    </div>
-                    <h1 class="article-title">Your Full Article Title Here</h1>
-                    <div class="article-text">
-                        <p>Start writing your article content here. This is where you put the main content of your article.</p>
-                        
-                        <h3>Subheading Example</h3>
-                        <p>More detailed content can go under subheadings like this one.</p>
-                        
-                        <ul>
-                            <li>Example bullet point 1</li>
-                            <li>Example bullet point 2</li>
-                            <li>Example bullet point 3</li>
-                        </ul>
-                        
-                        <blockquote>
-                            "This is an example of a highlighted quote or important point from your article."
-                        </blockquote>
-                        
-                        <p>You can continue writing more paragraphs as needed.</p>
-                        
-                    </div>
-                    <div class="rating-container">
-  <p>Maqaalkan miyuu kuu caawiyay?</p>
-  <div class="stars">
-    <span class="star" data-rating="1">★</span>
-    <span class="star" data-rating="2">★</span>
-    <span class="star" data-rating="3">★</span>
-    <span class="star" data-rating="4">★</span>
-    <span class="star" data-rating="5">★</span>
-  </div>
-  <p id="ratingFeedback"></p>
-</div>
-                    
-                    <div class="back-home-container">
-                        <a href="#" class="btn btn-outline back-home-btn">
-                            <i class="fas fa-arrow-left"></i> Dib ugu laabo
-                        </a>
-                    </div>
-                </div>
-                
-            </article>
-            <!-- ===== END TEMPLATE ===== -->
-        </div>
+              <!-- ===== END TEMPLATE ===== -->
+               <article class="article-preview" data-article="template-article">
+                  <img src="/Picture /c4537a681a8eb52da66b922f881d7073.gif" class="article-image" alt="Article image">
+                  <div class="article-preview-content">
+                      <div class="article-date">
+                          <i class="far fa-calendar"></i> <span class="date">April 29, 2025</span>
+                      </div>
+                      <h2 class="article-title">LABADA NOOC EE AQOONTA</h2>
+                      <p class="article-excerpt">Waxaa jira laba nooc oo aqoon ah oo aan faa'iido kuu lahayn adiga!
+..</p>
+                      <div class="read-more-container">
+                          <a href="#template-article" class="btn btn-primary read-more-btn">
+                              <i class="fas fa-book-open"></i> SII AKHRI
+                          </a>
+                      </div>
+                  </div>
+              </article>
+          </div>
+      </main>
+  
+      <!-- <div class="search-container">
+    <input type="text" id="searchInput" placeholder="Raadi maqaal...">
+    <button id="searchBtn"><i class="fas fa-search"></i></button>
+  </div>cle Details - Only Template Article -->
+      <div id="articleDetails">
+          <div class="container">
+              <!-- ===== ARTICLE TEMPLATE DETAIL ===== -->
+              <!-- COPY THIS TO ADD NEW ARTICLES -->
+              <article class="article-detail" id="template-article">
+                  <img src="/Picture /c4537a681a8eb52da66b922f881d7073.gif" class="article-image" alt="Article image">
+                  <div class="article-content">
+                      <div class="article-date">
+                          <i class="far fa-calendar"></i> <span class="date">April 29, 2025</span>
+                      </div>
+                      <h1 <h1 class="article-title"></h1>Waxaa jira laba nooc oo aqoon ah oo aan faa'iido lahayn:</h1>
+                      <div class="article-text">
+            <blockquote>
+                "Aqoonta waa iftin, laakiin qaar ka mid ah waxay noqon karaan kuwa aan wax kuu taraynin"
+            </blockquote>
+                          
+<section>
+    <h1>Laba Nooc oo Aqoon ah oo Aan Faa’iido Lahayn</h1>
+    
+    <p>Aqoontu waa mid ka mid ah hantida ugu qaalisan ee uu bini’aadam heli karo. Si kastaba ha ahaatee, ma aha aqoon kasta mid wax ku ool ah ama qiimo leh. Waxaa jira laba nooc oo aqoon ah oo aan faa’iido dhab ah u lahayn qofka:</p>
+    
+    <h2>1. Aqoon Aan Waxba Tareyn (Completely Useless Knowledge)</h2>
+    
+    <p>Waa aqoon aan lahayn wax faa’iido ah haba yaraatee, kana fog macno nololeed ama wax-ku-oolnimo. Noocan waxaa ka mid noqon kara:</p>
+    
+    <ul>
+        <li><strong>Xog aan micne lahayn:</strong> Tusaale ahaan, tirada cirridka ay leeyihiin bisadaha. In kasta oo ay tahay xaqiiqo jirta, ma leedahay adeegsi toos ah noloshaada?</li>
+        <li><strong>Xog khaldan ama been abuur ah:</strong> Xanta, mala-awaalka, ama fikrado aan cilmi lagu saleyn waxay marin habaabin karaan garaadka qofka.</li>
+        <li><strong>Xog waxyeello leh:</strong> Sida barashada anshax-xumada ama waxyaabaha dhaawacaya qofka iyo bulshada uu ku dhex nool yahay.</li>
+    </ul>
+    
+    <div class="warning-box">
+        <i class="fas fa-exclamation-triangle"></i>
+        <p>Aqoonta noocan ah waxay kaa lumin kartaa waqtigaaga, waxayna kaa hor istaagi kartaa inaad barato wax faa’iido kuu leh.</p>
     </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <a href="#" class="footer-logo">REYS<span>AQOON</span></a>
-            <p class="copyright">© 2025 REYS AQOON. Dhammaan xuquuqda qoraalka way dhawran.</p>
+    
+    <h2>2. Aqoon Faa’iido Leh Balse Aan Adiga Wax Kuu Tarayn</h2>
+    
+    <p>Qaar ka mid ah aqoonta waxay guud ahaan faa’iido u leeyihiin dadka, laakiin marka laga eego baahidaada shaqsiga ah, kama faa’iideysan kartid. Tani waxay dhacdaa marka:</p>
+    
+    <ol>
+        <li>Aqoontaasi aysan khusaynin xirfaddaada, danahaaga, ama yoolkaaga.</li>
+        <li>Aadan heli karin fursad aad ku dabaqdo.</li>
+        <li>Aadan ku jirin marxalad aad hadda ugu baahantahay aqoontaas.</li>
+    </ol>
+    
+    <div class="example-box">
+        <h3>Tusaale:</h3>
+        <p>Haddii aad tahay farsamo-yaqaan baranaya cilmi kombuyuutar, balse aad waqti badan ku lumiso barashada dhirta caafimaadka u leh xoolaha – waa aqoon faa’iido leh oo guud, sax, balse adiga aan hadda wax kuu taraynin.</p>
+        <p>Sidoo kale, haddii aad barato luqad aanad waligaa adeegsan doonin ama aysan jirin meel aad uga faa’iideysan karto, i.w.m.</p>
+    </div>
+    
+    <h2>Haddaba</h2>
+    
+    <p>Aqoon kasta qiime ayay leedahay, balse waxay wax tar leedahay marka:</p>
+    
+    <ul class="checklist">
+        <li>Ay si toos ah ugu adeegayso noloshaada.</li>
+        <li>Ay kaa caawiso horumarkaaga shaqsiyeed iyo xirfadeed.</li>
+        <li>Ay kuu furto fursado cusub oo noloshaada kor u qaada – adigoo Alle ku xiran oo ka cabsnaya.</li>
+    </ul>
+    
+    <p>Hadaba, ka fiirso waxa aad baranayso, kuna dadaal inaad maskaxdaada ku shubto aqoon wax ku ool ah oo noloshaada dhiseysa, aakhiradana ku anfacaysa.</p>
+</section>
+        
+        
+                          
+                      </div>
+                      <div class="rating-container">
+    <p>Maqaalkan miyuu kuu caawiyay?</p>
+    <div class="stars">
+      <span class="star" data-rating="1">★</span>
+      <span class="star" data-rating="2">★</span>
+      <span class="star" data-rating="3">★</span>
+      <span class="star" data-rating="4">★</span>
+      <span class="star" data-rating="5">★</span>
+    </div>
+    <p id="ratingFeedback"></p>
+  </div>
+                      
+                      <div class="back-home-container">
+                          <a href="#" class="btn btn-outline back-home-btn">
+                              <i class="fas fa-arrow-left"></i> Dib ugu laabo
+                          </a>
+                      </div>
+                  </div>
+                  
+              </article>
+              <!-- ===== END TEMPLATE ===== -->
+          </div>
+      </div>
+  
+      <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="footer-line">
+            <a href="https://wa.me/252614008340" class="footer-contact-link">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+            <span class="footer-separator">|</span>
+            <a href="mohammedadanmohammud82@gmail.com" class="footer-contact-link">
+                <i class="fas fa-envelope"></i> Email
+            </a>
         </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const articlesList = document.getElementById('articlesList');
-            const articleDetails = document.getElementById('articleDetails');
-            const heroSection = document.getElementById('heroSection');
-            const readMoreBtns = document.querySelectorAll('.read-more-btn');
-            const backHomeBtns = document.querySelectorAll('.back-home-btn');
-            const articleDetailViews = document.querySelectorAll('.article-detail');
-            const darkModeToggle = document.getElementById('darkModeToggle');
-            
-            // Dark mode toggle functionality
-            darkModeToggle.addEventListener('click', function() {
-                document.body.classList.toggle('dark-mode');
-                
-                // Save preference to localStorage
-                const isDarkMode = document.body.classList.contains('dark-mode');
-                localStorage.setItem('darkMode', isDarkMode);
-                
-                // Update icon
-                const icon = darkModeToggle.querySelector('i');
-                if (isDarkMode) {
-                    icon.classList.remove('fa-moon');
-                    icon.classList.add('fa-sun');
-                } else {
-                    icon.classList.remove('fa-sun');
-                    icon.classList.add('fa-moon');
-                }
-            });
-            
-            // Check for saved dark mode preference
-            if (localStorage.getItem('darkMode') === 'true') {
-                document.body.classList.add('dark-mode');
-                const icon = darkModeToggle.querySelector('i');
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            }
-            
-            // Show article detail with animation when "Read More" is clicked
-            readMoreBtns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const articleId = this.getAttribute('href').substring(1);
-                    
-                    // Add fade-out animation to articles list and hero section
-                    articlesList.classList.add('fade-out');
-                    heroSection.classList.add('fade-out');
-                    
-                    // After fade-out completes, switch views and fade in article
-                    setTimeout(() => {
-                        // Hide all article details
-                        articleDetailViews.forEach(article => {
-                            article.style.display = 'none';
-                            article.classList.remove('active');
-                        });
-                        
-                        // Show the selected article
-                        const selectedArticle = document.getElementById(articleId);
-                        selectedArticle.style.display = 'block';
-                        
-                        // Trigger reflow to enable animation
-                        void selectedArticle.offsetWidth;
-                        
-                        // Add active class to trigger fade-in
-                        selectedArticle.classList.add('active');
-                        
-                        // Switch views
-                        articlesList.style.display = 'none';
-                        heroSection.style.display = 'none';
-                        articleDetails.style.display = 'block';
-                        articlesList.classList.remove('fade-out');
-                        heroSection.classList.remove('fade-out');
-                        
-                        // Scroll to top
-                        window.scrollTo({
-                            top: 0,
-                            behavior: 'smooth'
-                        });
-                    }, 500);
-                });
-            });
-            
-            // Back button functionality (in article)
-            backHomeBtns.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    // Add fade-out animation to article details
-                    articleDetails.querySelector('.article-detail.active').classList.remove('active');
-                    articleDetails.classList.add('fade-out');
-                    
-                    // After fade-out completes, switch back to list view
-                    setTimeout(() => {
-                        // Hide all article details
-                        articleDetailViews.forEach(article => {
-                            article.style.display = 'none';
-                        });
-                        
-                        // Switch views
-                        articlesList.style.display = 'block';
-                        heroSection.style.display = 'block';
-                        articleDetails.style.display = 'none';
-                        
-                        // Add fade-in animation to articles list and hero
-                        articlesList.classList.add('fade-in');
-                        heroSection.classList.add('fade-in');
-                        
-                        // Remove animation classes after completion
-                        setTimeout(() => {
-                            articlesList.classList.remove('fade-in');
-                            heroSection.classList.remove('fade-in');
-                            articleDetails.classList.remove('fade-out');
-                        }, 500);
-                        
-                        // Scroll to top
-                        window.scrollTo({
-                            top: 0,
-                            behavior: 'smooth'
-                        });
-                    }, 500);
-                });
-            });
-            
-            // Check URL hash on load
-            if (window.location.hash) {
-                const articleId = window.location.hash.substring(1);
-                const article = document.getElementById(articleId);
-                
-                if (article && article.classList.contains('article-detail')) {
-                    // Show the article
-                    article.style.display = 'block';
-                    article.classList.add('active');
-                    
-                    // Hide hero and list, show details
-                    articlesList.style.display = 'none';
-                    heroSection.style.display = 'none';
-                    articleDetails.style.display = 'block';
-                }
-            }
-        });
-    </script>
-    
-    <script >
+        <p class="copyright">© 2025 REYS AQOON. Dhammaan xuquuqda way dhawran tahay.</p>
+    </div>
+</footer>
+      <script>
+          document.addEventListener('DOMContentLoaded', function() {
+              const articlesList = document.getElementById('articlesList');
+              const articleDetails = document.getElementById('articleDetails');
+              const heroSection = document.getElementById('heroSection');
+              const readMoreBtns = document.querySelectorAll('.read-more-btn');
+              const backHomeBtns = document.querySelectorAll('.back-home-btn');
+              const articleDetailViews = document.querySelectorAll('.article-detail');
+              const darkModeToggle = document.getElementById('darkModeToggle');
+              
+              // Dark mode toggle functionality
+              darkModeToggle.addEventListener('click', function() {
+                  document.body.classList.toggle('dark-mode');
+                  
+                  // Save preference to localStorage
+                  const isDarkMode = document.body.classList.contains('dark-mode');
+                  localStorage.setItem('darkMode', isDarkMode);
+                  
+                  // Update icon
+                  const icon = darkModeToggle.querySelector('i');
+                  if (isDarkMode) {
+                      icon.classList.remove('fa-moon');
+                      icon.classList.add('fa-sun');
+                  } else {
+                      icon.classList.remove('fa-sun');
+                      icon.classList.add('fa-moon');
+                  }
+              });
+              
+              // Check for saved dark mode preference
+              if (localStorage.getItem('darkMode') === 'true') {
+                  document.body.classList.add('dark-mode');
+                  const icon = darkModeToggle.querySelector('i');
+                  icon.classList.remove('fa-moon');
+                  icon.classList.add('fa-sun');
+              }
+              
+              // Show article detail with animation when "Read More" is clicked
+              readMoreBtns.forEach(btn => {
+                  btn.addEventListener('click', function(e) {
+                      e.preventDefault();
+                      const articleId = this.getAttribute('href').substring(1);
+                      
+                      // Add fade-out animation to articles list and hero section
+                      articlesList.classList.add('fade-out');
+                      heroSection.classList.add('fade-out');
+                      
+                      // After fade-out completes, switch views and fade in article
+                      setTimeout(() => {
+                          // Hide all article details
+                          articleDetailViews.forEach(article => {
+                              article.style.display = 'none';
+                              article.classList.remove('active');
+                          });
+                          
+                          // Show the selected article
+                          const selectedArticle = document.getElementById(articleId);
+                          selectedArticle.style.display = 'block';
+                          
+                          // Trigger reflow to enable animation
+                          void selectedArticle.offsetWidth;
+                          
+                          // Add active class to trigger fade-in
+                          selectedArticle.classList.add('active');
+                          
+                          // Switch views
+                          articlesList.style.display = 'none';
+                          heroSection.style.display = 'none';
+                          articleDetails.style.display = 'block';
+                          articlesList.classList.remove('fade-out');
+                          heroSection.classList.remove('fade-out');
+                          
+                          // Scroll to top
+                          window.scrollTo({
+                              top: 0,
+                              behavior: 'smooth'
+                          });
+                      }, 500);
+                  });
+              });
+              
+              // Back button functionality (in article)
+              backHomeBtns.forEach(btn => {
+                  btn.addEventListener('click', function(e) {
+                      e.preventDefault();
+                      
+                      // Add fade-out animation to article details
+                      articleDetails.querySelector('.article-detail.active').classList.remove('active');
+                      articleDetails.classList.add('fade-out');
+                      
+                      // After fade-out completes, switch back to list view
+                      setTimeout(() => {
+                          // Hide all article details
+                          articleDetailViews.forEach(article => {
+                              article.style.display = 'none';
+                          });
+                          
+                          // Switch views
+                          articlesList.style.display = 'block';
+                          heroSection.style.display = 'block';
+                          articleDetails.style.display = 'none';
+                          
+                          // Add fade-in animation to articles list and hero
+                          articlesList.classList.add('fade-in');
+                          heroSection.classList.add('fade-in');
+                          
+                          // Remove animation classes after completion
+                          setTimeout(() => {
+                              articlesList.classList.remove('fade-in');
+                              heroSection.classList.remove('fade-in');
+                              articleDetails.classList.remove('fade-out');
+                          }, 500);
+                          
+                          // Scroll to top
+                          window.scrollTo({
+                              top: 0,
+                              behavior: 'smooth'
+                          });
+                      }, 500);
+                  });
+              });
+              
+              // Check URL hash on load
+              if (window.location.hash) {
+                  const articleId = window.location.hash.substring(1);
+                  const article = document.getElementById(articleId);
+                  
+                  if (article && article.classList.contains('article-detail')) {
+                      // Show the article
+                      article.style.display = 'block';
+                      article.classList.add('active');
+                      
+                      // Hide hero and list, show details
+                      articlesList.style.display = 'none';
+                      heroSection.style.display = 'none';
+                      articleDetails.style.display = 'block';
+                  }
+              }
+          });
+      </script>
       
-    </script>
-    <script >
+      <script >
+        
+      </script>
+      <script >
+        
+        document.querySelectorAll('.star').forEach(star => {
+    star.addEventListener('click', function() {
+      const rating = this.dataset.rating;
       
-      document.querySelectorAll('.star').forEach(star => {
-  star.addEventListener('click', function() {
-    const rating = this.dataset.rating;
-    
-    // Highlight stars
-    document.querySelectorAll('.star').forEach(s => {
-      s.classList.toggle('active', s.dataset.rating <= rating);
+      // Highlight stars
+      document.querySelectorAll('.star').forEach(s => {
+        s.classList.toggle('active', s.dataset.rating <= rating);
+      });
+      
+      // Send to localStorage
+      localStorage.setItem(`rated_${window.location.pathname}`, rating);
+      
+      // Show feedback
+      const feedback = [
+        "Waan ka xumahay!",
+        "Mahadsanid!",
+        "Waad ku mahadsan tahay!",
+        "Aad baad u mahadsan tahay!",
+        "Waan ku faraxsanahay!"
+      ];
+      document.getElementById('ratingFeedback').textContent = feedback[rating-1];
     });
     
-    // Send to localStorage
-    localStorage.setItem(`rated_${window.location.pathname}`, rating);
-    
-    // Show feedback
-    const feedback = [
-      "Waan ka xumahay!",
-      "Mahadsanid!",
-      "Waad ku mahadsan tahay!",
-      "Aad baad u mahadsan tahay!",
-      "Waan ku faraxsanahay!"
-    ];
-    document.getElementById('ratingFeedback').textContent = feedback[rating-1];
+    // Load previous rating
+    const savedRating = localStorage.getItem(`rated_${window.location.pathname}`);
+    if (savedRating && star.dataset.rating <= savedRating) {
+      star.classList.add('active');
+    }
   });
-  
-  // Load previous rating
-  const savedRating = localStorage.getItem(`rated_${window.location.pathname}`);
-  if (savedRating && star.dataset.rating <= savedRating) {
-    star.classList.add('active');
-  }
-});
-    </script>
-</body>
-</html>
+      </script>
+  </body>
+                          </html>
