@@ -739,181 +739,178 @@
         <p class="copyright">© 2025 REYS AQOON. Dhammaan xuquuqda way dhawran tahay.</p>
     </div>
 </footer>
-      <script>
-          document.addEventListener('DOMContentLoaded', function() {
-              const articlesList = document.getElementById('articlesList');
-              const articleDetails = document.getElementById('articleDetails');
-              const heroSection = document.getElementById('heroSection');
-              const readMoreBtns = document.querySelectorAll('.read-more-btn');
-              const backHomeBtns = document.querySelectorAll('.back-home-btn');
-              const articleDetailViews = document.querySelectorAll('.article-detail');
-              const darkModeToggle = document.getElementById('darkModeToggle');
-              
-              // Dark mode toggle functionality
-              darkModeToggle.addEventListener('click', function() {
-                  document.body.classList.toggle('dark-mode');
-                  
-                  // Save preference to localStorage
-                  const isDarkMode = document.body.classList.contains('dark-mode');
-                  localStorage.setItem('darkMode', isDarkMode);
-                  
-                  // Update icon
-                  const icon = darkModeToggle.querySelector('i');
-                  if (isDarkMode) {
-                      icon.classList.remove('fa-moon');
-                      icon.classList.add('fa-sun');
-                  } else {
-                      icon.classList.remove('fa-sun');
-                      icon.classList.add('fa-moon');
-                  }
-              });
-              
-              // Check for saved dark mode preference
-              if (localStorage.getItem('darkMode') === 'true') {
-                  document.body.classList.add('dark-mode');
-                  const icon = darkModeToggle.querySelector('i');
-                  icon.classList.remove('fa-moon');
-                  icon.classList.add('fa-sun');
-              }
-              
-              // Show article detail with animation when "Read More" is clicked
-              readMoreBtns.forEach(btn => {
-                  btn.addEventListener('click', function(e) {
-                      e.preventDefault();
-                      const articleId = this.getAttribute('href').substring(1);
-                      
-                      // Add fade-out animation to articles list and hero section
-                      articlesList.classList.add('fade-out');
-                      heroSection.classList.add('fade-out');
-                      
-                      // After fade-out completes, switch views and fade in article
-                      setTimeout(() => {
-                          // Hide all article details
-                          articleDetailViews.forEach(article => {
-                              article.style.display = 'none';
-                              article.classList.remove('active');
-                          });
-                          
-                          // Show the selected article
-                          const selectedArticle = document.getElementById(articleId);
-                          selectedArticle.style.display = 'block';
-                          
-                          // Trigger reflow to enable animation
-                          void selectedArticle.offsetWidth;
-                          
-                          // Add active class to trigger fade-in
-                          selectedArticle.classList.add('active');
-                          
-                          // Switch views
-                          articlesList.style.display = 'none';
-                          heroSection.style.display = 'none';
-                          articleDetails.style.display = 'block';
-                          articlesList.classList.remove('fade-out');
-                          heroSection.classList.remove('fade-out');
-                          
-                          // Scroll to top
-                          window.scrollTo({
-                              top: 0,
-                              behavior: 'smooth'
-                          });
-                      }, 500);
-                  });
-              });
-              
-              // Back button functionality (in article)
-              backHomeBtns.forEach(btn => {
-                  btn.addEventListener('click', function(e) {
-                      e.preventDefault();
-                      
-                      // Add fade-out animation to article details
-                      articleDetails.querySelector('.article-detail.active').classList.remove('active');
-                      articleDetails.classList.add('fade-out');
-                      
-                      // After fade-out completes, switch back to list view
-                      setTimeout(() => {
-                          // Hide all article details
-                          articleDetailViews.forEach(article => {
-                              article.style.display = 'none';
-                          });
-                          
-                          // Switch views
-                          articlesList.style.display = 'block';
-                          heroSection.style.display = 'block';
-                          articleDetails.style.display = 'none';
-                          
-                          // Add fade-in animation to articles list and hero
-                          articlesList.classList.add('fade-in');
-                          heroSection.classList.add('fade-in');
-                          
-                          // Remove animation classes after completion
-                          setTimeout(() => {
-                              articlesList.classList.remove('fade-in');
-                              heroSection.classList.remove('fade-in');
-                              articleDetails.classList.remove('fade-out');
-                          }, 500);
-                          
-                          // Scroll to top
-                          window.scrollTo({
-                              top: 0,
-                              behavior: 'smooth'
-                          });
-                      }, 500);
-                  });
-              });
-              
-              // Check URL hash on load
-              if (window.location.hash) {
-                  const articleId = window.location.hash.substring(1);
-                  const article = document.getElementById(articleId);
-                  
-                  if (article && article.classList.contains('article-detail')) {
-                      // Show the article
-                      article.style.display = 'block';
-                      article.classList.add('active');
-                      
-                      // Hide hero and list, show details
-                      articlesList.style.display = 'none';
-                      heroSection.style.display = 'none';
-                      articleDetails.style.display = 'block';
-                  }
-              }
-          });
-      </script>
-      
-      <script >
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // ========== FIXED DARK MODE TOGGLE ==========
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const icon = darkModeToggle.querySelector('i');
+    
+    // Initialize dark mode from localStorage or system preference
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const savedMode = localStorage.getItem('darkMode');
+    
+    if (savedMode === 'true' || (savedMode === null && prefersDark)) {
+        document.body.classList.add('dark-mode');
+        icon.classList.replace('fa-moon', 'fa-sun');
+    }
+    
+    darkModeToggle.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        localStorage.setItem('darkMode', isDark);
+        icon.classList.toggle('fa-sun');
+        icon.classList.toggle('fa-moon');
+    });
+
+    // ========== FIXED ARTICLE NAVIGATION ==========
+    const articlesList = document.getElementById('articlesList');
+    const articleDetails = document.getElementById('articleDetails');
+    const heroSection = document.getElementById('heroSection');
+    
+    // Function to show an article with animation
+    function showArticle(articleId) {
+        // Hide main content
+        articlesList.classList.add('fade-out');
+        heroSection.classList.add('fade-out');
         
-      </script>
-      <script >
+        setTimeout(() => {
+            // Hide all articles first
+            document.querySelectorAll('.article-detail').forEach(article => {
+                article.style.display = 'none';
+                article.classList.remove('active');
+            });
+            
+            // Show requested article
+            const article = document.getElementById(articleId);
+            if (article) {
+                articleDetails.style.display = 'block';
+                article.style.display = 'block';
+                
+                // Trigger animation
+                setTimeout(() => {
+                    article.classList.add('active');
+                }, 10);
+                
+                // Update URL
+                history.pushState(null, null, `#${articleId}`);
+            }
+            
+            // Complete fade out
+            articlesList.style.display = 'none';
+            heroSection.style.display = 'none';
+            articlesList.classList.remove('fade-out');
+            heroSection.classList.remove('fade-out');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 300);
+    }
+    
+    // Function to show main page
+    function showMainPage() {
+        articleDetails.querySelector('.article-detail.active').classList.remove('active');
+        articleDetails.classList.add('fade-out');
         
-        document.querySelectorAll('.star').forEach(star => {
-    star.addEventListener('click', function() {
-      const rating = this.dataset.rating;
-      
-      // Highlight stars
-      document.querySelectorAll('.star').forEach(s => {
-        s.classList.toggle('active', s.dataset.rating <= rating);
-      });
-      
-      // Send to localStorage
-      localStorage.setItem(`rated_${window.location.pathname}`, rating);
-      
-      // Show feedback
-      const feedback = [
-        "Waan ka xumahay!",
-        "Mahadsanid!",
-        "Waad ku mahadsan tahay!",
-        "Aad baad u mahadsan tahay!",
-        "Waan ku faraxsanahay!"
-      ];
-      document.getElementById('ratingFeedback').textContent = feedback[rating-1];
+        setTimeout(() => {
+            articlesList.style.display = 'block';
+            heroSection.style.display = 'block';
+            articleDetails.style.display = 'none';
+            
+            // Trigger animation
+            articlesList.classList.add('fade-in');
+            heroSection.classList.add('fade-in');
+            
+            // Complete transition
+            setTimeout(() => {
+                articlesList.classList.remove('fade-in');
+                heroSection.classList.remove('fade-in');
+                articleDetails.classList.remove('fade-out');
+            }, 300);
+            
+            // Update URL
+            history.pushState(null, null, ' ');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 300);
+    }
+    
+    // Read More button click
+    document.querySelectorAll('.read-more-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const articleId = this.getAttribute('href').substring(1);
+            showArticle(articleId);
+        });
     });
     
-    // Load previous rating
-    const savedRating = localStorage.getItem(`rated_${window.location.pathname}`);
-    if (savedRating && star.dataset.rating <= savedRating) {
-      star.classList.add('active');
+    // Back button click
+    document.querySelectorAll('.back-home-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            showMainPage();
+        });
+    });
+    
+    // Load article from URL hash on page load
+    function loadArticleFromHash() {
+        if (window.location.hash) {
+            const articleId = window.location.hash.substring(1);
+            const article = document.getElementById(articleId);
+            
+            if (article) {
+                articlesList.style.display = 'none';
+                heroSection.style.display = 'none';
+                articleDetails.style.display = 'block';
+                article.style.display = 'block';
+                article.classList.add('active');
+            }
+        }
     }
-  });
-      </script>
+    
+    // Handle browser back/forward buttons
+    window.addEventListener('popstate', function() {
+        if (window.location.hash) {
+            loadArticleFromHash();
+        } else {
+            showMainPage();
+        }
+    });
+    
+    // Initial load
+    loadArticleFromHash();
+
+    // ========== STAR RATING SYSTEM ==========
+    document.querySelectorAll('.star').forEach(star => {
+        star.addEventListener('click', function() {
+            const rating = this.dataset.rating;
+            
+            // Highlight stars
+            document.querySelectorAll('.star').forEach(s => {
+                s.classList.toggle('active', s.dataset.rating <= rating);
+            });
+            
+            // Save to localStorage
+            localStorage.setItem(`rated_${window.location.pathname}`, rating);
+            
+            // Show feedback
+            const feedback = [
+                "Waan ka xumahay!",
+                "Mahadsanid!",
+                "Waad ku mahadsan tahay!",
+                "Aad baad u mahadsan tahay!",
+                "Waan ku faraxsanahay!"
+            ];
+            document.getElementById('ratingFeedback').textContent = feedback[rating-1];
+        });
+        
+        // Load previous rating
+        const savedRating = localStorage.getItem(`rated_${window.location.pathname}`);
+        if (savedRating && star.dataset.rating <= savedRating) {
+            star.classList.add('active');
+        }
+    });
+});
+</script>
   </body>
     </html>
