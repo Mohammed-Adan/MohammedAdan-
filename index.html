@@ -40,7 +40,23 @@
               --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
               --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
           }
-  
+  /* Dark Mode Button Adjustments */
+.dark-mode .read-more-btn {
+    box-shadow: 0 4px 15px rgba(127, 156, 245, 0.3);
+}
+.dark-mode .read-more-btn:hover {
+    box-shadow: 0 8px 20px rgba(127, 156, 245, 0.5);
+}
+.dark-mode .back-home-btn {
+    border-color: var(--primary-light);
+    color: var(--primary-light);
+}
+.dark-mode .back-home-btn::before {
+    background: var(--primary-light);
+}
+.dark-mode .back-home-btn:hover {
+    color: var(--darker);
+}
           * {
               margin: 0;
               padding: 0;
@@ -179,36 +195,44 @@
               box-shadow: 0 6px 20px rgba(94, 114, 228, 0.4);
           }
   
-          .btn-primary::before {
-              content: '';
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              background: linear-gradient(to right, var(--primary), var(--primary-light));
-              opacity: 0;
-              transition: var(--transition);
-              z-index: -1;
-          }
-  
-          .btn-primary:hover::before {
-              opacity: 1;
-          }
-  
-          .btn-outline {
-              border: 2px solid var(--primary);
-              color: var(--primary);
-              background: transparent;
-          }
-  
-          .btn-outline:hover {
-              background: var(--primary);
-              color: white;
-              transform: translateY(-3px);
-              box-shadow: 0 6px 20px rgba(94, 114, 228, 0.2);
-          }
-  
+         /* ===== READ MORE BUTTON ===== */
+.read-more-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    z-index: 1;
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 4px 15px rgba(94, 114, 228, 0.3);
+    border: none;
+}
+
+/* [PASTE ALL THE READ-MORE BUTTON CSS FROM PREVIOUS ANSWER HERE] */
+
+/* ===== BACK HOME BUTTON ===== */
+.back-home-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.4s ease;
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    overflow: hidden;
+}
+
+/* [PASTE ALL THE BACK-HOME BUTTON CSS FROM PREVIOUS ANSWER HERE] */
           .hero {
               background: linear-gradient(135deg, rgba(94, 114, 228, 0.1) 0%, rgba(245, 54, 92, 0.1) 100%);
               padding: 80px 0;
@@ -333,7 +357,15 @@
               text-align: center;
               margin-top: 20px;
           }
-  
+  body.dark-mode footer {
+    background: #1A202C !important;
+    color: #F7FAFC !important;
+    border-color: #4A5568 !important;
+}
+
+body.dark-mode .footer-contact-link {
+    color: #F7FAFC !important;
+}
           .article-detail {
               display: none;
               background: var(--lighter);
@@ -345,7 +377,76 @@
               transform: translateY(20px);
               transition: opacity 0.5s ease, transform 0.5s ease;
           }
-  
+  /* ----- Compact Quran Verse ----- */
+.quran-verse-compact {
+  background: var(--verse-bg, #f8faf8);
+  border-radius: 8px;
+  padding: 16px;
+  margin: 20px 0;
+  border: 1px solid var(--verse-border, #e0f0e5);
+  transition: all 0.3s ease;
+}
+
+.arabic-verse {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.verse-icon {
+  color: var(--icon-color, #4caf50);
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.verse-text {
+  font-family: 'Amiri', 'Noto Sans Arabic', serif;
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: var(--verse-text, #1b5e20);
+  direction: rtl;
+  text-align: right;
+  flex-grow: 1;
+}
+
+.verse-meta {
+  border-top: 1px dashed var(--meta-border, rgba(76, 175, 80, 0.3));
+  padding-top: 12px;
+}
+
+.surah-name {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--meta-text, #5a6d76);
+  margin-bottom: 8px;
+}
+
+.translation {
+  display: flex;
+  gap: 8px;
+  font-size: 0.95rem;
+  color: var(--translation-text, #37474f);
+  line-height: 1.6;
+}
+
+.translation i {
+  color: var(--icon-color, #4caf50);
+  margin-top: 3px;
+}
+
+/* ----- Dark Mode ----- */
+.dark-mode .quran-verse-compact {
+  --verse-bg: #1a2e22;
+  --verse-border: #2d4a3a;
+  --verse-text: #c8e6c9;
+  --meta-border: rgba(129, 198, 132, 0.3);
+  --meta-text: #b0bec5;
+  --translation-text: #e0e0e0;
+  --icon-color: #81c784;
+}
           .article-detail.active {
               opacity: 1;
               transform: translateY(0);
@@ -354,7 +455,98 @@
           .article-content {
               padding: 30px;
           }
-  
+  /* ===== DARK MODE BUTTONS ===== */
+.dark-mode .read-more-btn {
+    background: linear-gradient(135deg, #7F9CF5 0%, #667EEA 100%);
+    box-shadow: 0 4px 20px rgba(127, 156, 245, 0.35);
+    color: #1A202C;
+    text-shadow: 0 1px 1px rgba(255,255,255,0.2);
+}
+
+.dark-mode .read-more-btn:hover {
+    box-shadow: 0 6px 25px rgba(127, 156, 245, 0.5);
+    transform: translateY(-3px) scale(1.02);
+}
+
+.dark-mode .read-more-btn::before {
+    background: linear-gradient(135deg, #667EEA 0%, #5A67D8 100%);
+}
+
+.dark-mode .back-home-btn {
+    border-color: #7F9CF5;
+    color: #7F9CF5;
+}
+
+.dark-mode .back-home-btn:hover {
+    color: #1A202C;
+    border-color: transparent;
+}
+
+.dark-mode .back-home-btn::before {
+    background: linear-gradient(135deg, #7F9CF5 0%, #5A67D8 100%);
+}
+
+/* Glow effect for dark mode */
+.dark-mode .read-more-btn:hover,
+.dark-mode .back-home-btn:hover {
+    filter: drop-shadow(0 0 8px rgba(127, 156, 245, 0.6));
+}
+
+/* Icon animations */
+.dark-mode .read-more-btn:hover i {
+    transform: translateX(4px) rotate(5deg);
+}
+
+.dark-mode .back-home-btn:hover i {
+    transform: translateX(-4px) rotate(-5deg);
+}
+/* ===== BASE BUTTON ENHANCEMENTS ===== */
+.read-more-btn {
+    /* Keep your existing styles */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+.back-home-btn {
+    /* Keep your existing styles */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+/* New floating effect */
+.dark-mode .read-more-btn,
+.dark-mode .back-home-btn {
+    will-change: transform, box-shadow;
+    perspective: 1000px;
+}
+
+/* 3D tilt effect on hover */
+.dark-mode .read-more-btn:hover {
+    transform: translateY(-3px) rotateX(5deg);
+}
+
+.dark-mode .back-home-btn:hover {
+    transform: translateY(-3px) rotateX(-5deg);
+}
+/* ===== DARK MODE SPECIFIC ANIMATIONS ===== */
+@keyframes darkBtnPulse {
+    0% { box-shadow: 0 0 0 0 rgba(127, 156, 245, 0.4); }
+    70% { box-shadow: 0 0 0 12px rgba(127, 156, 245, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(127, 156, 245, 0); }
+}
+
+.dark-mode .read-more-btn:hover {
+    animation: darkBtnPulse 2s infinite;
+}
+
+@keyframes borderGlow {
+    0% { box-shadow: 0 0 5px 0 rgba(127, 156, 245, 0); }
+    50% { box-shadow: 0 0 10px 3px rgba(127, 156, 245, 0.3); }
+    100% { box-shadow: 0 0 5px 0 rgba(127, 156, 245, 0); }
+}
+
+.dark-mode .back-home-btn:hover::after {
+    animation: borderGlow 1.5s infinite;
+    border-color: #7F9CF5;
+}
           .article-text {
               font-size: 1.1rem;
               color: var(--dark);
@@ -461,7 +653,29 @@
     margin-bottom: 15px;
     font-size: 1.1rem;
 }
+.reading-time {
+  font-size: 0.8rem;
+  color: var(--time-text, #64748b);
+  position: relative;
+  padding-bottom: 3px;
+  display: inline-block;
+}
 
+.reading-time:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--time-underline, #cbd5e1);
+  transition: all 0.3s ease;
+}
+
+.dark-mode .reading-time {
+  --time-text: #94a3b8;
+  --time-underline: rgba(255,255,255,0.2);
+}
 .footer-tagline {
     color: var(--gray);
     margin-top: 10px;
@@ -527,7 +741,122 @@
               padding: 30px 0;
               text-align: center;
           }
+  /* Base Styles - Works in both modes */
+.important-notice-extended {
+  --point-bg: #3498db;  /* Default light mode color */
+  --point-text: white;
   
+  margin: 1.5rem 0;
+  padding: 0;
+  color: #2c3e50; /* Default text color */
+}
+
+.notice-subheader {
+  font-style: italic;
+  margin-bottom: 1rem;
+  color: #2980b9;
+  font-size: 0.95em;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.notice-subheader::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #3498db;
+}
+
+.notice-points {
+  padding-left: 1.8rem;
+  margin: 0;
+  counter-reset: point-counter;
+  list-style: none;
+}
+
+.notice-point {
+  position: relative;
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+  line-height: 1.6;
+}
+
+.notice-point::before {
+  counter-increment: point-counter;
+  content: counter(point-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: var(--point-bg);
+  color: var(--point-text);
+  width: 1.3em;
+  height: 1.3em;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.point-text {
+  display: inline-block;
+  padding: 0.1rem 0;
+}
+
+.highlight-social {
+  font-weight: 500;
+}
+
+.highlight-social span {
+  color: #2565ae;
+  font-weight: 600;
+}
+
+/* Dark Mode Overrides */
+body.dark-mode .important-notice-extended {
+  --point-bg: #5dade2;
+  --point-text: #1a2e3a;
+  color: #ecf0f1;
+}
+
+body.dark-mode .notice-subheader {
+  color: #7fb3d5;
+}
+
+body.dark-mode .notice-subheader::before {
+  color: #5dade2;
+}
+
+body.dark-mode .highlight-social span {
+  color: #64b5f6;
+}
+
+/* Light Mode Assurance */
+body:not(.dark-mode) .important-notice-extended {
+  --point-bg: #3498db !important;
+  --point-text: white !important;
+}
+
+/* Animation */
+.notice-point {
+  transition: transform 0.2s ease;
+}
+
+.notice-point:hover {
+  transform: translateX(3px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .notice-points {
+    padding-left: 1.5rem;
+  }
+  
+  .notice-point {
+    padding-left: 1.8rem;
+  }
+}
           .footer-logo {
               font-size: 1.5rem;
               font-weight: 700;
@@ -550,7 +879,167 @@
               .hero h1 {
                   font-size: 2.2rem;
               }
-              
+              /* ----- Light Mode Styles ----- */
+.important-notice {
+  --notice-bg: #f0f8ff;
+  --notice-border: #3498db;
+  --notice-text: #2c3e50;
+  --notice-title: #2980b9;
+  --notice-mark: #fff9c4;
+  
+  background: var(--notice-bg);
+  border-left: 5px solid var(--notice-border);
+  border-radius: 0 8px 8px 0;
+  padding: 16px;
+  margin: 24px 0;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  transition: all 0.3s ease;
+}
+
+.notice-icon {
+  flex-shrink: 0;
+  color: var(--notice-border);
+  margin-top: 2px;
+}
+
+.notice-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.notice-title {
+  color: var(--notice-title);
+  margin: 0 0 8px 0;
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+.notice-content p {
+  margin: 0;
+  color: var(--notice-text);
+  line-height: 1.6;
+}
+/* Base Styles */
+.modern-notice {
+  --notice-bg: #f8fafc;
+  --notice-border: #e2e8f0;
+  --notice-text: #334155;
+  --notice-highlight: #fef9c3;
+  --point-color: #3b82f6;
+  --point-icon: #3b82f6;
+  
+  background: var(--notice-bg);
+  border: 1px solid var(--notice-border);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 24px 0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.notice-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.notice-paragraph {
+  margin: 0;
+  color: var(--notice-text);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.highlight-difference {
+  background: var(--notice-highlight);
+  padding: 0 6px;
+  border-radius: 4px;
+  color: inherit;
+}
+
+.modern-points {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modern-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--notice-text);
+  line-height: 1.6;
+}
+
+.point-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  color: var(--point-icon);
+}
+
+/* Dark Mode Styles */
+.dark-mode .modern-notice {
+  --notice-bg: #1e293b;
+  --notice-border: #334155;
+  --notice-text: #e2e8f0;
+  --notice-highlight: #5d4037;
+  --point-color: #60a5fa;
+  --point-icon: #60a5fa;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* Hover Effects */
+.modern-notice:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.dark-mode .modern-notice:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .modern-notice {
+    padding: 16px;
+    border-radius: 8px;
+  }
+  
+  .notice-paragraph {
+    font-size: 1rem;
+  }
+  
+  .modern-point {
+    gap: 8px;
+  }
+}
+.notice-content mark {
+  background: var(--notice-mark);
+  padding: 0 4px;
+  border-radius: 3px;
+}
+
+/* ----- Dark Mode Styles ----- */
+.dark-mode .important-notice {
+  --notice-bg: #1a2e3a;
+  --notice-border: #5dade2;
+  --notice-text: #ecf0f1;
+  --notice-title: #7fb3d5;
+  --notice-mark: #5d4037;
+}
+
+/* Animation on hover */
+.important-notice:hover {
+  transform: translateX(3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
               .article-title {
                   font-size: 1.7rem;
               }
@@ -598,41 +1087,158 @@
           </div>
       </section>
   
-      <!-- Articles List -  -->
-      <main class="articles" id="articlesList">
-          <div class="container">
-              <!-- ===== ARTICLE TEMPLATE PREVIEW ===== -->
+<!-- Articles List -->
+<main class="articles" id="articlesList">
+    <div class="container">
+        <!-- Cadaadiska Nafta Preview -->
+        <article class="article-preview" data-article="cadaadiska-nafeed">
+            <img src="luis-villasmil-mlVbMbxfWI4-unsplash.jpg" class="article-image" alt="Cadaadiska Nafta">
+            <div class="article-preview-content">
+                <div class="article-date">
+                    <i class="far fa-calendar"></i> <span class="date">April 30 2025</span>
+                </div>
+                <h2 class="article-title">CADAADISKA NAFTA</h2>
+                <p class="article-excerpt">Fahanka cadaadiska nafeed iyo sida loola dhaqmo</p>
+                <div class="read-more-container">
+<a href="#cadaadiska-nafeed" class="read-more-btn">
+    <i class="fas fa-book-open"></i> SII AKHRI
+</a>
 
-              <!-- ===== END TEMPLATE ===== -->
-               <article class="article-preview" data-article="template-article">
-                  <img src="c4537a681a8eb52da66b922f881d7073.gif" class="article-image" alt="Article image">
-                  <div class="article-preview-content">
-                      <div class="article-date">
-                          <i class="far fa-calendar"></i> <span class="date">April 29, 2025</span>
-                      </div>
-                      <h2 class="article-title">LABADA NOOC EE AQOONTA</h2>
-                      <p class="article-excerpt">Waxaa jira laba nooc oo aqoon ah oo aan faa'iido kuu lahayn adiga!
-..</p>
-                      <div class="read-more-container">
-                          <a href="#template-article" class="btn btn-primary read-more-btn">
-                              <i class="fas fa-book-open"></i> SII AKHRI
-                          </a>
-                      </div>
-                  </div>
-              </article>
-          </div>
-      </main>
-  
-      <!-- <div class="search-container">
-    <input type="text" id="searchInput" placeholder="Raadi maqaal...">
-    <button id="searchBtn"><i class="fas fa-search"></i></button>
-  </div>cle Details - Only Template Article -->
-      <div id="articleDetails">
-          <div class="container">
-              <!-- ===== ARTICLE TEMPLATE DETAIL ===== -->
-              <!-- COPY THIS TO ADD NEW ARTICLES -->
-              <article class="article-detail" id="template-article">
-                  <img src="c4537a681a8eb52da66b922f881d7073.gif" class="article-image" alt="Article image">
+                </div>
+            </div>
+        </article>
+
+        <!-- Labada Nooc ee Aqoonta Preview -->
+        <article class="article-preview" data-article="labada nooc ee aqoonta">
+            <img src="element5-digital-OyCl7Y4y0Bk-unsplash.jpg" class="article-image" alt="Article image">
+            <div class="article-preview-content">
+                <div class="article-date">
+                    <i class="far fa-calendar"></i> <span class="date">April 29, 2025</span>
+                </div>
+                <h2 class="article-title">LABADA NOOC EE AQOONTA</h2>
+                <p class="article-excerpt">Waxaa jira laba nooc oo aqoon ah oo aan faa'iido kuu lahayn adiga!</p>
+                <div class="read-more-container">
+<a href="#labada nooc ee aqoonta" class="read-more-btn">
+    <i class="fas fa-book-open"></i> SII AKHRI
+</a>
+                </div>
+            </div>
+        </article>
+    </div>
+</main>
+
+<!-- Article Details -->
+<div id="articleDetails">
+    <div class="container">
+        <!-- Cadaadiska Nafta Full Article -->
+        <article class="article-detail" id="cadaadiska-nafeed">
+            <img src="luis-villasmil-mlVbMbxfWI4-unsplash.jpg" class="article-image" alt="Cadaadiska Nafta">
+            <div class="article-content">
+                <div class="article-date">
+                    <i class="far fa-calendar"></i> <span class="date">April 30, 2025</span>
+                </div>
+                <h1 class="article-title">CADAADISKA NAFTA</h1>
+                
+                <div class="article-text">
+                    <p>Cadaadiska nafta in uu qofku uu la kulmo <strong>welwel</strong>, <strong>cadaadis</strong>, <strong>walaac</strong> iyyadoo u sabab ah <strong>caqabadooyinka</strong> uu la kulmayo qofka waa mid soo jireen ah oo aanan hadda bilow aheen. Alle wuxuu yiri:</p>
+                    
+                    <div class="quran-verse-compact">
+                        <div class="arabic-verse">
+                            <i class="fas fa-quran verse-icon"></i>
+                            <div class="verse-text">
+                                لَقَدۡ خَلَقۡنَا ٱلۡإِنسَـٰنَ فِی كَبَدٍۭ
+                            </div>
+                        </div>
+                        <div class="verse-meta">
+                            <span class="surah-name">
+                                <i class="fas fa-bookmark"></i> سورة البلد - الآية ٤
+                            </span>
+                            <div class="translation">
+                                <i class="fas fa-language"></i>
+                                <span>"Ee Eebe Dadka wuu Abuuray iyagoo dhib iyo shaqo (Adduunka kala kulmi)."</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modern-notice">
+                        <div class="notice-body">
+                            <p class="notice-paragraph">Laakiin waxaa <mark class="highlight-difference">kala duwan</mark> xaaladaha, laga yaabee taariikhdii hore dadkii noolaa ineysan welwelkooda uusan zaa'id ahayn oo aanan darnayn, laakiin dunada maanta aynu joogno waa duni xawli ku socota dhanka aqoonta iyo dhanka technology-ida.</p>
+                            
+                            <ul class="modern-points">
+                                <li class="modern-point">
+                                    <svg class="point-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                                    </svg>
+                                    <span>Saamaynta isbeddelka degdegga ah ee nolosha.</span>
+                                </li>
+                                <li class="modern-point">
+                                    <svg class="point-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                                    </svg>
+                                    <span>Hab nololeedka iyo xiriirka bulshada oo si degdeg ah isu beddelaya.</span>
+                                </li>
+                                <li class="modern-point">
+                                    <svg class="point-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+                                    </svg>
+                                    <span>laga yaabee inuusan la qabsan kari isbeddelka nololeed ee kala duwan.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="important-notice-extended">
+                        <p class="notice-subheader"><em>Tan kale ayaa ah:</em></p>
+                        <ol class="notice-points">
+                            <li class="notice-point">
+                                <span class="point-text">In uu qofku dareemo inay qasab ku tahay inuu xiriir joogta ah la yeesho 
+                                    <span class="highlight-social">baraha bulshada (<span>social media</span>)</span>, 
+                                    taas oo keeni karta daal maskaxeed.
+                                </span>
+                            </li>
+                            <li class="notice-point">
+                                <span class="point-text">Qofkii laga yaabee inuu walwal ka qabo mustaqbalkiisa oo dareemayo culeys.</span>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <div class="important-notice">
+                        <div class="notice-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                            </svg>
+                        </div>
+                        <div class="notice-content">
+                            <h4 class="notice-title">Haddaba waxaa muhiim ah:</h4>
+                            <p>In qofku yeesho <mark>maarayn</mark> uu si deggan ugu wajaho xaaladaha, barashada sida uu u maareeyo cadaadiska, iyo inuu si xikmad leh u waajaho noloshiisa.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rating-container">
+                    <p>Maqaalkan miyuu ku caawiyay, Akhriste?</p>
+                    <div class="stars">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                    <p class="rating-feedback" style="display: none; margin-top: 10px;"></p>
+                </div>
+
+                <div class="back-home-container">
+                    <a href="#" class="btn btn-outline back-home-btn">
+                        <i class="fas fa-arrow-left"></i> Dib u laabo
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Labada Nooc ee Aqoonta Full Article -->
+      
+              <article class="article-detail" id="labada nooc ee aqoonta">
+                  <img src="element5-digital-OyCl7Y4y0Bk-unsplash.jpg" class="article-image" alt="Article image">
                   <div class="article-content">
                       <div class="article-date">
                           <i class="far fa-calendar"></i> <span class="date">April 29, 2025</span>
@@ -695,28 +1301,29 @@
         
                           
                       </div>
-                      <div class="rating-container">
+                <div class="rating-container">
     <p>Maqaalkan miyuu ku caawiyay, Akhriste?</p>
     <div class="stars">
-      <span class="star" data-rating="1">★</span>
-      <span class="star" data-rating="2">★</span>
-      <span class="star" data-rating="3">★</span>
-      <span class="star" data-rating="4">★</span>
-      <span class="star" data-rating="5">★</span>
+        <span class="star" data-value="1">★</span>
+        <span class="star" data-value="2">★</span>
+        <span class="star" data-value="3">★</span>
+        <span class="star" data-value="4">★</span>
+        <span class="star" data-value="5">★</span>
     </div>
-    <p id="ratingFeedback"></p>
-  </div>
-                      
+    <p class="rating-feedback" style="display: none; margin-top: 10px;"></p>
+</div>
                       <div class="back-home-container">
                           <a href="#" class="btn btn-outline back-home-btn">
-                              <i class="fas fa-arrow-left"></i> Dib ugu laabo
+                              <i class="fas fa-arrow-left"></i> Dib u laabo
                           </a>
                       </div>
                   </div>
                   
               </article>
               <!-- ===== END TEMPLATE ===== -->
-          </div>
+              
+              <!-- COPY THIS CODE -->
+      </div>
       </div>
   
       <!-- Footer -->
@@ -738,8 +1345,35 @@
         </div>
         <p class="copyright">© 2025 REYS AQOON. Dhammaan xuquuqda way dhawran tahay.</p>
     </div>
+    </body>
+    <script>
+// Simple reading time calculator
+function addReadingTimes() {
+  // Calculate for article previews
+  document.querySelectorAll('.article-preview').forEach(preview => {
+    const text = preview.textContent;
+    const words = text.split(/\s+/).length;
+    const minutes = Math.ceil(words / 150);
+    const badge = `<span class="reading-time">${minutes} Daqiiqo akhris</span>`;
+    preview.querySelector('.article-date').insertAdjacentHTML('afterend', badge);
+  });
+  
+  // Calculate for full articles
+  document.querySelectorAll('.article-detail').forEach(article => {
+    const text = article.textContent;
+    const words = text.split(/\s+/).length;
+    const minutes = Math.ceil(words / 150);
+    const badge = `<div class="reading-time">${minutes} Daqiiqo akhris</div>`;
+    article.querySelector('.article-content').insertAdjacentHTML('afterbegin', badge);
+  });
+}
+
+// Run when page loads
+window.addEventListener('DOMContentLoaded', addReadingTimes);
+</script>
 </footer>
     <script>
+// Qaybta koowaad: DARK MODE & ARTICLE NAVIGATION
 document.addEventListener('DOMContentLoaded', function() {
     // ========== FIXED DARK MODE TOGGLE ==========
     const darkModeToggle = document.getElementById('darkModeToggle');
@@ -767,48 +1401,36 @@ document.addEventListener('DOMContentLoaded', function() {
     const articleDetails = document.getElementById('articleDetails');
     const heroSection = document.getElementById('heroSection');
     
-    // Function to show an article with animation
     function showArticle(articleId) {
-        // Hide main content
         articlesList.classList.add('fade-out');
         heroSection.classList.add('fade-out');
         
         setTimeout(() => {
-            // Hide all articles first
             document.querySelectorAll('.article-detail').forEach(article => {
                 article.style.display = 'none';
                 article.classList.remove('active');
             });
             
-            // Show requested article
             const article = document.getElementById(articleId);
             if (article) {
                 articleDetails.style.display = 'block';
                 article.style.display = 'block';
-                
-                // Trigger animation
                 setTimeout(() => {
                     article.classList.add('active');
                 }, 10);
-                
-                // Update URL
                 history.pushState(null, null, `#${articleId}`);
             }
             
-            // Complete fade out
             articlesList.style.display = 'none';
             heroSection.style.display = 'none';
             articlesList.classList.remove('fade-out');
             heroSection.classList.remove('fade-out');
-            
-            // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 300);
     }
     
-    // Function to show main page
     function showMainPage() {
-        articleDetails.querySelector('.article-detail.active').classList.remove('active');
+        articleDetails.querySelector('.article-detail.active')?.classList.remove('active');
         articleDetails.classList.add('fade-out');
         
         setTimeout(() => {
@@ -816,26 +1438,20 @@ document.addEventListener('DOMContentLoaded', function() {
             heroSection.style.display = 'block';
             articleDetails.style.display = 'none';
             
-            // Trigger animation
             articlesList.classList.add('fade-in');
             heroSection.classList.add('fade-in');
             
-            // Complete transition
             setTimeout(() => {
                 articlesList.classList.remove('fade-in');
                 heroSection.classList.remove('fade-in');
                 articleDetails.classList.remove('fade-out');
             }, 300);
             
-            // Update URL
             history.pushState(null, null, ' ');
-            
-            // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }, 300);
     }
-    
-    // Read More button click
+
     document.querySelectorAll('.read-more-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -843,16 +1459,14 @@ document.addEventListener('DOMContentLoaded', function() {
             showArticle(articleId);
         });
     });
-    
-    // Back button click
+
     document.querySelectorAll('.back-home-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
             e.preventDefault();
             showMainPage();
         });
     });
-    
-    // Load article from URL hash on page load
+
     function loadArticleFromHash() {
         if (window.location.hash) {
             const articleId = window.location.hash.substring(1);
@@ -867,8 +1481,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     }
-    
-    // Handle browser back/forward buttons
+
     window.addEventListener('popstate', function() {
         if (window.location.hash) {
             loadArticleFromHash();
@@ -876,41 +1489,56 @@ document.addEventListener('DOMContentLoaded', function() {
             showMainPage();
         }
     });
-    
-    // Initial load
-    loadArticleFromHash();
 
-    // ========== STAR RATING SYSTEM ==========
+    loadArticleFromHash();
+});
+</script>
+
+<script>
+// Qaybta labaad: STAR RATING SYSTEM
+document.addEventListener('DOMContentLoaded', function() {
+    const messages = [
+        "Waan ka xumahay!",
+        "Mahadsanid!",
+        "Waad ku mahadsan tahay!",
+        "Aad baad u mahadsan tahay!",
+        "Waan ku faraxsanahay!"
+    ];
+
     document.querySelectorAll('.star').forEach(star => {
         star.addEventListener('click', function() {
-            const rating = this.dataset.rating;
+            const container = this.closest('.rating-container');
+            const value = parseInt(this.getAttribute('data-value'));
+            const feedback = container.querySelector('.rating-feedback');
             
-            // Highlight stars
-            document.querySelectorAll('.star').forEach(s => {
-                s.classList.toggle('active', s.dataset.rating <= rating);
+            container.querySelectorAll('.star').forEach((s, i) => {
+                s.classList.toggle('active', i < value);
             });
             
-            // Save to localStorage
-            localStorage.setItem(`rated_${window.location.pathname}`, rating);
+            feedback.textContent = messages[value - 1];
+            feedback.style.display = 'block';
             
-            // Show feedback
-            const feedback = [
-                "Waan ka xumahay!",
-                "Mahadsanid!",
-                "Waad ku mahadsan tahay!",
-                "Aad baad u mahadsan tahay!",
-                "Waan ku faraxsanahay!"
-            ];
-            document.getElementById('ratingFeedback').textContent = feedback[rating-1];
+            const articleId = this.closest('.article-detail').id;
+            localStorage.setItem(`rating_${articleId}`, value);
         });
-        
-        // Load previous rating
-        const savedRating = localStorage.getItem(`rated_${window.location.pathname}`);
-        if (savedRating && star.dataset.rating <= savedRating) {
-            star.classList.add('active');
+    });
+
+    document.querySelectorAll('.article-detail').forEach(article => {
+        const savedRating = localStorage.getItem(`rating_${article.id}`);
+        if (savedRating) {
+            const rating = parseInt(savedRating);
+            const container = article.querySelector('.rating-container');
+            
+            container.querySelectorAll('.star').forEach((star, i) => {
+                star.classList.toggle('active', i < rating);
+            });
+            
+            const feedback = container.querySelector('.rating-feedback');
+            feedback.textContent = messages[rating - 1];
+            feedback.style.display = 'block';
         }
     });
 });
+
 </script>
-  </body>
     </html>
