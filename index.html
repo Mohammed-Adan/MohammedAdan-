@@ -1382,7 +1382,16 @@ footer {
                 --notice-title: #7fb3d5;
                 --notice-mark: #5d4037;
             }
+.thank-you-heart {
+  animation: 
+    heartBeat 0.6s forwards 3.5s,
+    heartPulse 1.5s infinite 4.1s;
+}
 
+@keyframes heartPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
             /* Animation on hover */
             .important-notice:hover {
                 transform: translateX(3px);
