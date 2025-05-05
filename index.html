@@ -1621,32 +1621,8 @@
         setupNavigation();
         setupStarRatings();
     });
-// Add to the beginning of your script
-window.addEventListener('load', () => {
-  if (!navigator.onLine) {
-    showOfflineAlert();
-  }
-  
-  window.addEventListener('online', () => {
-    document.getElementById('offlineAlert').remove();
-  });
-  
-  window.addEventListener('offline', showOfflineAlert);
-});
 
-function showOfflineAlert() {
-  if (document.getElementById('offlineAlert')) return;
-  
-  const alert = document.createElement('div');
-  alert.id = 'offlineAlert';
-  alert.innerHTML = `
-    <div style="position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); 
-                background: #ff6b6b; color: white; padding: 10px 20px; border-radius: 4px; 
-                z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
-      <i class="fas fa-wifi"></i> Waan ka xumahay, netkaaga ma daarna.🥺
-  `;
-  document.body.appendChild(alert);
-        }
+        
     </script>
 </body>
   </html>
