@@ -409,7 +409,32 @@
   0%, 100% { transform: translate(-50%, 0); opacity: 1; }
   50% { transform: translate(-50%, 10px); opacity: 0.5; }
 }
-
+@keyframes fadeInExpand {
+    0% { width: 0; opacity: 0; }
+    100% { width: 80px; opacity: 1; }
+}
+@keyframes sparkleMove {
+    0% { left: 0; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+}
+ @keyframes moveDots { 
+        0% { transform: rotate(0); } 
+        100% { transform: rotate(360deg); } 
+    }
+    @keyframes fadeInUp { 
+        from { opacity: 0; transform: translateY(20px); } 
+        to { opacity: 1; transform: translateY(0); } 
+    }
+    @keyframes expandLine { 
+        from { width: 0; opacity: 0; } 
+        to { width: 80px; opacity: 1; } 
+    }
+    @keyframes fadeIn { 
+        from { opacity: 0; } 
+        to { opacity: 1; } 
+    }
 /* Dark Mode Adjustments */
 .dark-mode .hero-background {
   background: linear-gradient(135deg, rgba(94, 114, 228, 0.2) 0%, rgba(245, 54, 92, 0.2) 100%);
