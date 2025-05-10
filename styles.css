@@ -109,6 +109,10 @@
             text-decoration: none;
             font-family: 'Montserrat', sans-serif;
         }
+#heroSection {
+    border: none !important;
+    box-shadow: none !important;
+}
 
         .logo span {
             color: var(--secondary);
