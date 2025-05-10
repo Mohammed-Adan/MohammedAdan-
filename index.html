@@ -27,76 +27,55 @@
         </div>
     </header>
 
-<!-- Enhanced Floating Hero Design -->
-<section class="modern-hero" id="heroSection">
-  <div class="hero-background"></div>
-  
-  <div class="container">
-    <div class="hero-content-wrapper">
-      <!-- Main Title with Animation -->
-      <div class="hero-title-card">
-        <h1 class="main-title">
-          <span class="title-word" style="--delay: 0.1s">REYS</span>
-          <span class="title-word" style="--delay: 0.3s">AQOON</span>
+<!-- Hero Section -->
+<section class="hero" id="heroSection" style="background: var(--light); padding: 4rem 0; text-align: center; position: relative; overflow: hidden;">
+    <!-- Animated dots (visible in both modes) -->
+    <div style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; opacity: 0.05;">
+        <div style="position: absolute; width: 300%; height: 300%; top: -100%; left: -100%; 
+                  background-image: radial-gradient(var(--primary) 1px, transparent 1px);
+                  background-size: 20px 20px;
+                  animation: moveDots 60s linear infinite;">
+        </div>
+    </div>
+
+    <div class="container" style="position: relative; z-index: 2;">
+        <!-- Title with fade-in -->
+        <h1 id="mainTitle" style="font-size: 2.5rem; margin: 0 0 1rem; animation: fadeInUp 1s ease-out;">
+            REYS AQOON
         </h1>
-        <div class="title-underline"></div>
-      </div>
-
-      <!-- Subtitle with Enhanced Design -->
-      <div class="hero-subtitle-card">
-        <div class="subtitle-line" style="--delay: 0.5s">
-          <div class="subtitle-icon">
-            <i class="fas fa-circle"></i>
-          </div>
-          <p>waa <strong>madal</strong></p>
-        </div>
         
-        <div class="subtitle-line" style="--delay: 0.7s">
-          <div class="subtitle-icon">
-            <i class="fas fa-circle"></i>
-          </div>
-          <p>loogu tala galay</p>
-        </div>
-        
-        <div class="subtitle-line" style="--delay: 0.9s">
-          <div class="subtitle-icon">
-            <i class="fas fa-circle"></i>
-          </div>
-          <p>in lagu gudbiyo</p>
-        </div>
-        
-        <div class="subtitle-line" style="--delay: 1.1s">
-          <div class="subtitle-icon">
-            <i class="fas fa-circle"></i>
-          </div>
-          <p>maqaallo faa'iido leh</p>
-        </div>
-      </div>
-
-      <!-- Thank You with Animation -->
-      <div class="thank-you-box" style="--delay: 1.5s">
-        <div class="thank-you-text">
-          Waad ku mahadsan tahay booqashadaada
-          <span class="thank-you-heart">❤</span>
-        </div>
-      </div>
-
-<!-- Scroll Indicator Section (place this right before closing </section> tag) -->
-<div class="scroll-indicator" style="opacity: 1;"> <!-- Force visible by default -->
-  <div class="arrow-container">
-    <svg class="scroll-arrow" width="30" height="50" viewBox="0 0 24 24">
-      <path class="arrow-path" 
-            d="M12 2V22M5 15L12 22L19 15" 
-            stroke="currentColor" 
-            stroke-width="2" 
-            fill="none" 
-            stroke-linecap="round" 
-            stroke-linejoin="round"/>
-    </svg>
-    <span class="scroll-hint">horey u soco</span>
-  </div>
+<div class="sparkle-underline" style="
+    height: 2px;
+    width: 80px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(90deg, 
+        transparent, 
+        var(--primary) 20%, 
+        var(--primary) 80%, 
+        transparent);
+    position: relative;
+    opacity: 0;
+    animation: fadeInExpand 1s ease-out 0.3s forwards;
+">
+    <div style="
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: white;
+        border-radius: 50%;
+        filter: blur(1px);
+        animation: sparkleMove 2s ease-in-out infinite;
+        left: 0;
+        top: -2px;
+    "></div>
 </div>
-</section >
+        
+        <!-- Subtitle -->
+        <p id="mainSubtitle" style="font-size: 1.1rem; max-width: 500px; margin: 0 auto 2rem; animation: fadeIn 1s ease-out 0.6s both;">
+            waa <strong style="color: var(--primary);">madal</strong> loogu tala galay in lagu gudbiyo maqaallo faa'iido leh
+        </p>
+    </div>
+</section>
 
 <!-- Articles List -->
 <main class="articles" id="articlesList">
