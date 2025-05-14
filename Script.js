@@ -297,5 +297,3 @@ Mahadsanid qiimayntaada! ❤️`;
     feedback.style.display = 'block';
   });
 });
-
-  
