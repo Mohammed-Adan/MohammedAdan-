@@ -252,5 +252,50 @@
         setupNavigation();
         setupStarRatings();
     });
+document.querySelectorAll('.star').forEach(star => {
+  star.addEventListener('click', function() {
+    const rating = this.getAttribute('data-value');
+    const phone = "252614008340"; // Replace with your number
+
+    // 1. GUARANTEED TITLE EXTRACTION
+    let articleTitle = "Unknown Article"; // Fallback text
+    
+    // Method 1: Check article detail view
+    const articleDetail = this.closest('.article-detail');
+    if (articleDetail) {
+      const titleEl = articleDetail.querySelector('.article-title, h1, h2');
+      if (titleEl) articleTitle = titleEl.innerText;
+    }
+    
+    // Method 2: Check preview cards (if Method 1 fails)
+    if (articleTitle === "Unknown Article") {
+      const articlePreview = this.closest('.article-preview');
+      if (articlePreview) {
+        const previewTitle = articlePreview.querySelector('.article-title, h2, h4');
+        if (previewTitle) articleTitle = previewTitle.innerText;
+      }
+    }
+
+    // 2. WHATSAPP MESSAGE
+    const message = `🌟 REYS AQOON RATING 🌟
+    
+*Maqaal:* ${articleTitle}
+*Xiddigaha:* ${'★'.repeat(rating)}${'☆'.repeat(5-rating)}  
+*Taariikh:* ${new Date().toLocaleString()}
+    
+Mahadsanid qiimayntaada! ❤️`;
+
+    window.open(`https://wa.me/252614008340?text=${encodeURIComponent(message)}`, '_blank');
+
+    // 3. VISUAL FEEDBACK (with emoji fallback)
+    const feedback = this.closest('.rating-container').querySelector('.rating-feedback');
+    feedback.innerHTML = `
+      <i class="fab fa-whatsapp" style="color: #25D366;"></i>
+      ${articleTitle === "Unknown Article" ? "❌" : "✓"} 
+      Diiwaan gelinta: ${articleTitle.substring(0, 20)}${articleTitle.length > 20 ? "..." : ""}
+    `;
+    feedback.style.display = 'block';
+  });
+});
 
   
