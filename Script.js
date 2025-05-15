@@ -252,48 +252,140 @@
         setupNavigation();
         setupStarRatings();
     });
-document.querySelectorAll('.star').forEach(star => {
-  star.addEventListener('click', function() {
-    const rating = this.getAttribute('data-value');
-    const phone = "252614008340"; // Replace with your number
-
-    // 1. GUARANTEED TITLE EXTRACTION
-    let articleTitle = "Unknown Article"; // Fallback text
+document.addEventListener('DOMContentLoaded', function() {
+  // Initialize stars with event listeners
+  document.querySelectorAll('.star').forEach(star => {
+    // Hover effects
+    star.addEventListener('mouseenter', function() {
+      const value = parseInt(this.getAttribute('data-value'));
+      const stars = this.parentElement.querySelectorAll('.star');
+      
+      stars.forEach((s, i) => {
+        if (i < value) {
+          s.style.transform = 'scale(1.2)';
+          s.style.color = 'var(--secondary)';
+        }
+      });
+    });
     
-    // Method 1: Check article detail view
-    const articleDetail = this.closest('.article-detail');
-    if (articleDetail) {
-      const titleEl = articleDetail.querySelector('.article-title, h1, h2');
-      if (titleEl) articleTitle = titleEl.innerText;
+    star.addEventListener('mouseleave', function() {
+      const stars = this.parentElement.querySelectorAll('.star');
+      
+      stars.forEach(s => {
+        if (!s.classList.contains('active')) {
+          s.style.transform = 'scale(1)';
+          s.style.color = 'var(--light-gray)';
+        }
+      });
+    });
+    
+    // Click handler
+    star.addEventListener('click', function() {
+      const container = this.closest('.rating-container');
+      const value = parseInt(this.getAttribute('data-value'));
+      const articleTitle = this.closest('.article-detail')?.querySelector('.article-title')?.textContent || "Maqaal aan la garaneyn";
+      
+      // Update UI
+      container.querySelectorAll('.star').forEach((s, i) => {
+        s.classList.toggle('active', i < value);
+        s.style.color = i < value ? 'var(--secondary)' : 'var(--light-gray)';
+      });
+      
+      // Show confirmation modal
+      showRatingModal(value, articleTitle, container);
+    });
+  });
+  
+  // Load saved ratings
+  document.querySelectorAll('.article-detail').forEach(article => {
+    const savedRating = localStorage.getItem(`rating_${article.id}`);
+    if (savedRating) {
+      const rating = parseInt(savedRating);
+      const container = article.querySelector('.rating-container');
+      
+      container.querySelectorAll('.star').forEach((star, i) => {
+        if (i < rating) {
+          star.classList.add('active');
+          star.style.color = 'var(--secondary)';
+        }
+      });
     }
-    
-    // Method 2: Check preview cards (if Method 1 fails)
-    if (articleTitle === "Unknown Article") {
-      const articlePreview = this.closest('.article-preview');
-      if (articlePreview) {
-        const previewTitle = articlePreview.querySelector('.article-title, h2, h4');
-        if (previewTitle) articleTitle = previewTitle.innerText;
-      }
-    }
-
-    // 2. WHATSAPP MESSAGE
-    const message = `🌟 REYS AQOON RATING 🌟
-    
-*Maqaal:* ${articleTitle}
-*Xiddigaha:* ${'★'.repeat(rating)}${'☆'.repeat(5-rating)}  
-*Taariikh:* ${new Date().toLocaleString()}
-    
-Mahadsanid qiimayntaada! ❤️`;
-
-    window.open(`https://wa.me/252614008340?text=${encodeURIComponent(message)}`, '_blank');
-
-    // 3. VISUAL FEEDBACK (with emoji fallback)
-    const feedback = this.closest('.rating-container').querySelector('.rating-feedback');
-    feedback.innerHTML = `
-      <i class="fab fa-whatsapp" style="color: #25D366;"></i>
-      ${articleTitle === "Unknown Article" ? "❌" : "✓"} 
-      Diiwaan gelinta: ${articleTitle.substring(0, 20)}${articleTitle.length > 20 ? "..." : ""}
-    `;
-    feedback.style.display = 'block';
   });
 });
+
+function showRatingModal(rating, articleTitle, container) {
+  const modal = document.createElement('div');
+  modal.className = 'rating-modal';
+  modal.innerHTML = `
+    <div class="modal-content">
+      <h3>Qiimayntaadu</h3>
+      <div class="modal-stars">${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}</div>
+      <p>Ma rabtaa inaad iigu soo dirto WhatsApp, qiimayntaada?</p>
+      <div class="modal-buttons">
+        <button class="modal-cancel">Maya</button>
+        <button class="modal-confirm">Haa</button>
+      </div>
+    </div>
+  `;
+  
+  document.body.appendChild(modal);
+  
+  // Animate in
+  setTimeout(() => {
+    modal.querySelector('.modal-content').style.transform = 'translateY(0)';
+    modal.querySelector('.modal-content').style.opacity = '1';
+  }, 10);
+  
+  // Handle confirm
+  modal.querySelector('.modal-confirm').addEventListener('click', function() {
+    const phone = "252614008340"; // Replace with your WhatsApp number
+    const message = `🌟 REYS AQOON RATING 🌟\n\n*Maqaal:* ${articleTitle}\n*Qiimaynta:* ${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}\n*Taariikh:* ${new Date().toLocaleDateString()}\n\nMahadsanid qiimayntaada! ❤️`;
+    
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+    closeModal(modal);
+    showFeedback(rating, container);
+  });
+  
+  // Handle cancel
+  modal.querySelector('.modal-cancel').addEventListener('click', function() {
+    closeModal(modal);
+    showFeedback(rating, container);
+  });
+  
+  // Close when clicking outside
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal(modal);
+    }
+  });
+}
+
+function closeModal(modal) {
+  modal.querySelector('.modal-content').style.transform = 'translateY(20px)';
+  modal.querySelector('.modal-content').style.opacity = '0';
+  setTimeout(() => modal.remove(), 300);
+}
+
+function showFeedback(rating, container) {
+  const feedback = container.querySelector('.rating-feedback');
+  feedback.innerHTML = `
+    <div class="feedback-content">
+      <svg class="feedback-icon" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" />
+      </svg>
+      <span> Haye, waad mahadsantahay. Qiimayntaadu waa: <span class="feedback-stars">${'★'.repeat(rating)}</span></span>
+    </div>
+  `;
+  
+  feedback.style.display = 'flex';
+  feedback.style.animation = 'feedbackIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards';
+  
+  // Save rating to localStorage
+  const articleId = container.closest('.article-detail').id;
+  localStorage.setItem(`rating_${articleId}`, rating);
+  
+  setTimeout(() => {
+    feedback.style.animation = 'feedbackOut 0.4s ease forwards';
+    setTimeout(() => feedback.style.display = 'none', 400);
+  }, 3000);
+}
