@@ -339,7 +339,7 @@ function showRatingModal(rating, articleTitle, container) {
   // Handle confirm
   modal.querySelector('.modal-confirm').addEventListener('click', function() {
     const phone = "252614008340"; // Replace with your WhatsApp number
-    const message = `🌟 REYS AQOON RATING 🌟\n\n*Maqaal:* ${articleTitle}\n*Qiimaynta:* ${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}\n*Taariikh:* ${new Date().toLocaleDateString()}\n\nMahadsanid qiimayntaada! ❤️`;
+    const message = `🌟 REYS AQOON RATING 🌟\n\n*Maqaal:* ${articleTitle}\n*Qiimaynta:* ${'★'.repeat(rating)}${'☆'.repeat(5 - rating)}\n*Taariikh:* ${new Date().toLocaleDateString()}\n\nKu mahadsantahay qiimayntaada. ❤️`;
     
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
     closeModal(modal);
