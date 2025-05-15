@@ -2137,3 +2137,136 @@ footer {
                 padding: 25px;
             }
         }
+/* ===== STAR RATING STYLES ===== */
+
+
+/* Rating Modal */
+.rating-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.dark-mode .rating-modal {
+  background: rgba(0, 0, 0, 0.85);
+}
+
+.modal-content {
+  background: var(--lighter);
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dark-mode .modal-content {
+  background: var(--light);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.modal-content h3 {
+  color: var(--primary);
+  margin-bottom: 1rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.modal-stars {
+  font-size: 2rem;
+  color: var(--secondary);
+  margin: 1rem 0;
+  letter-spacing: 5px;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.modal-buttons button {
+  padding: 0.7rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: 'Montserrat', sans-serif;
+}
+
+.modal-confirm {
+  background: var(--primary);
+  color: white;
+  border: none;
+}
+
+.modal-confirm:hover {
+  background: var(--primary-light);
+  transform: translateY(-2px);
+}
+
+.modal-cancel {
+  background: transparent;
+  color: var(--gray);
+  border: 1px solid var(--light-gray);
+}
+
+.modal-cancel:hover {
+  border-color: var(--gray);
+}
+
+/* Feedback Animation */
+.feedback-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.8rem 1rem;
+  background: rgba(94, 114, 228, 0.1);
+  border-radius: 8px;
+  border-left: 3px solid var(--primary);
+}
+
+.dark-mode .feedback-content {
+  background: rgba(127, 156, 245, 0.1);
+}
+
+.feedback-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--primary);
+}
+
+.feedback-stars {
+  color: var(--secondary);
+  letter-spacing: 2px;
+}
+
+@keyframes feedbackIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes feedbackOut {
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
