@@ -28,7 +28,7 @@
             --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
             --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.3);
         }
-        
+
         .dark-mode .read-more-btn {
             box-shadow: 0 4px 15px rgba(127, 156, 245, 0.3);
         }
@@ -45,7 +45,7 @@
         .dark-mode .back-home-btn:hover {
             color: var(--darker);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
@@ -69,7 +69,7 @@
             max-width: 800px;
             margin: 0 auto;
             padding: 0 20px;
-            
+
         }
 
         header {
@@ -81,7 +81,7 @@
             padding: -34px;
             transition: background-color 0.3s ease;
         }
-        
+
         .stars {
             font-size: 24px;
             color: var(--light-gray);
@@ -95,7 +95,7 @@
         .star.active {
             color: var(--secondary);
         }
-        
+
         .navbar {
             display: flex;
             justify-content: space-between;
@@ -145,7 +145,7 @@
             overflow: hidden;
             border: none;
         }
-        
+
         .mobile-menu-toggle {
             display: none;
             background: transparent;
@@ -154,12 +154,12 @@
             font-size: 1.5rem;
             cursor: pointer;
         }
-        
+
         @media (max-width: 768px) {
             .mobile-menu-toggle {
                 display: block;
             }
-            
+
             .nav-links {
                 position: fixed;
                 top: 80px;
@@ -175,12 +175,12 @@
                 transition: transform 0.3s ease;
                 z-index: 99;
             }
-            
+
             .nav-links.active {
                 transform: translateY(0);
             }
         }
-        
+
         .btn-primary {
             background: var(--primary);
             color: white;
@@ -451,7 +451,7 @@
 .dark-mode .subtitle-line p {
   color: var(--dark);
 }
-        
+
        .hero {
     background: var(--light); /* Uses your light background color */
     padding: 80px 0;
@@ -542,7 +542,7 @@
             color: var(--dark);
             margin-bottom: 25px;
         }
-        
+
         /* Straight Line Footer */
         .footer-line {
             display: flex;
@@ -583,12 +583,12 @@
             align-items: center;
             gap: 2px;
         }
-        
+
         .read-more-container {
             text-align: left;
             margin-top: 20px;
         }
-        
+
         body.dark-mode footer {
             background: #1A202C !important;
             color: #F7FAFC !important;
@@ -638,15 +638,15 @@ header {
 }rk-mode .footer-contact-link {
             color: #F7FAFC !important;
         }
-        
+
          .article-detail {
-              display: none;
+              display: block;
               background: var(--lighter);
               border-radius: 12px;
               overflow: hidden;
               box-shadow: var(--shadow-md);
               margin-bottom: 50px;
-              opacity: 0;
+              opacity: 1;
               transform: translateY(20px);
               transition: opacity 0.5s ease, transform 0.5s ease;
           }
@@ -914,7 +914,7 @@ header {
             --translation-text: #e0e0e0;
             --icon-color: #81c784;
         }
-        
+
         .article-detail.active {
             opacity: 1;
             transform: translateY(0);
@@ -923,7 +923,7 @@ header {
         .article-content {
             padding: 30px;
         }
-        
+
         /* ===== DARK MODE BUTTONS ===== */
         .dark-mode .read-more-btn {
             background: linear-gradient(135deg, #7F9CF5 0%, #667EEA 100%);
@@ -969,7 +969,7 @@ header {
         .dark-mode .back-home-btn:hover i {
             transform: translateX(-4px) rotate(-5deg);
         }
-        
+
         /* ===== BASE BUTTON ENHANCEMENTS ===== */
         .read-more-btn {
             /* Keep your existing styles */
@@ -996,7 +996,7 @@ header {
         .dark-mode .back-home-btn:hover {
             transform: translateY(-3px) rotateX(-5deg);
         }
-        
+
         /* ===== DARK MODE SPECIFIC ANIMATIONS ===== */
         @keyframes darkBtnPulse {
             0% { box-shadow: 0 0 0 0 rgba(127, 156, 245, 0.4); }
@@ -1018,7 +1018,7 @@ header {
             animation: borderGlow 1.5s infinite;
             border-color: #7F9CF5;
         }
-        
+
         .article-text {
             font-size: 1.1rem;
             color: var(--dark);
@@ -1039,7 +1039,7 @@ header {
             font-size: 1.3rem;
             margin: 25px 0 10px;
         }
-        
+
         /* Special Content Blocks */
         .warning-box {
             background: rgba(245, 54, 92, 0.1);
@@ -1089,7 +1089,7 @@ header {
             color: var(--primary);
             margin-top: 30px;
         }
-        
+
         .article-text ul, 
         .article-text ol {
             margin-bottom: 20px;
@@ -1109,7 +1109,7 @@ header {
             background: rgba(94, 114, 228, 0.05);
             transition: background 0.3s ease;
         }
-        
+
         /* Footer Grid Layout */
         .footer-grid {
             display: grid;
@@ -1128,7 +1128,7 @@ header {
             margin-bottom: 15px;
             font-size: 1.1rem;
         }
-        
+
         .reading-time {
             font-size: 0.8rem;
             color: var(--time-text, #64748b);
@@ -1152,7 +1152,7 @@ header {
             --time-text: #94a3b8;
             --time-underline: rgba(255,255,255,0.2);
         }
-        
+
         .footer-tagline {
             color: var(--gray);
             margin-top: 10px;
@@ -1184,7 +1184,7 @@ header {
             padding-top: 20px;
             text-align: center;
         }
-        
+
         .dark-mode .article-text blockquote {
             background: rgba(94, 114, 228, 0.1);
         }
@@ -1218,12 +1218,12 @@ header {
             padding: 30px 0;
             text-align: center;
         }
-        
+
         /* Base Styles - Works in both modes */
         .important-notice-extended {
             --point-bg: #3498db;  /* Default light mode color */
             --point-text: white;
-            
+
             margin: 1.5rem 0;
             padding: 0;
             color: #2c3e50; /* Default text color */
@@ -1376,12 +1376,12 @@ header {
             .notice-points {
                 padding-left: 1.5rem;
             }
-            
+
             .notice-point {
                 padding-left: 1.8rem;
             }
         }
-        
+
         .footer-logo {
             font-size: 1.5rem;
             font-weight: 700;
@@ -1404,7 +1404,7 @@ header {
             .hero h1 {
                 font-size: 2.2rem;
             }
-            
+
             /* ----- Light Mode Styles ----- */
             .important-notice {
                 --notice-bg: #f0f8ff;
@@ -1412,7 +1412,7 @@ header {
                 --notice-text: #2c3e50;
                 --notice-title: #2980b9;
                 --notice-mark: #fff9c4;
-                
+
                 background: var(--notice-bg);
                 border-left: 5px solid var(--notice-border);
                 border-radius: 0 8px 8px 0;
@@ -1447,7 +1447,7 @@ header {
                 color: var(--notice-text);
                 line-height: 1.6;
             }
-            
+
             /* Base Styles */
             .modern-notice {
                 --notice-bg: #f8fafc;
@@ -1456,7 +1456,7 @@ header {
                 --notice-highlight: #fef9c3;
                 --point-color: #3b82f6;
                 --point-icon: #3b82f6;
-                
+
                 background: var(--notice-bg);
                 border: 1px solid var(--notice-border);
                 border-radius: 12px;
@@ -1538,16 +1538,16 @@ header {
                     padding: 16px;
                     border-radius: 8px;
                 }
-                
+
                 .notice-paragraph {
                     font-size: 1rem;
                 }
-                
+
                 .modern-point {
                     gap: 8px;
                 }
             }
-            
+
             .notice-content mark {
                 background: var(--notice-mark);
                 padding: 0 4px;
@@ -1626,7 +1626,7 @@ footer {
   --text-primary: #2a2d34;    /* Dark slate */
   --text-secondary: #5e72e4;  /* Your existing blue */
   --accent: #ff7e5f;          /* Coral accent */
-  
+
   /* Dark Mode Versions */
   --darker: #1a1c23;
   --dark-card: #242731;
@@ -2113,11 +2113,11 @@ footer {
                 transform: translateX(3px);
                 box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             }
-            
+
             .article-title {
                 font-size: 1.7rem;
             }
-            
+
             .article-image {
                 height: 250px;
             }
@@ -2127,11 +2127,11 @@ footer {
             .hero {
                 padding: 60px 0;
             }
-            
+
             .hero h1 {
                 font-size: 1.8rem;
             }
-            
+
             .article-content, 
             .article-preview-content {
                 padding: 25px;
@@ -2270,3 +2270,25 @@ footer {
     transform: translateY(-10px);
   }
 }
+.animate-appear {
+    opacity: 0;
+    transform: translateY(20px);
+    visibility: hidden;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out, visibility 0.6s;
+}
+
+.animate-appear.show {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+}
+.article-preview {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.article-preview.visible {
+  opacity: 1;
+  transform: translateY(0);
+          }
