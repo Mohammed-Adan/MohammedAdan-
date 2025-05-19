@@ -506,12 +506,22 @@
             box-shadow: var(--shadow-lg);
         }
 
-        .article-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            transition: var(--transition);
-        }
+        /* Article Detail Image */
+.article-detail .article-image {
+    width: 100%;
+    height: 200px; /* Match preview card height */
+    object-fit: cover; /* Same as preview cards */
+    transition: var(--transition);
+    display: block; /* Remove extra space */
+    border-radius: 12px 12px 0 0; /* Match preview cards */
+}
+
+.article-detail .image-container {
+    height: 200px; /* Match preview card container */
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px; /* Add spacing */
+}
 
         .article-preview:hover .article-image {
             transform: scale(1.02);
