@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const CONFIG = {
         readingSpeed: 150,
         previewReadingSpeed: 100,
-        whatsappPhone: "2526140",
+        whatsappPhone: "252614008340",
         scrollOffset: 100,
         ratingMessages: [
             "Waan ka xumahay.",
