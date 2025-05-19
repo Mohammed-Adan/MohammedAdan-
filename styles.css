@@ -2292,3 +2292,206 @@ footer {
   opacity: 1;
   transform: translateY(0);
           }
+/* ===== Main Grid Layout ===== */
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  padding: 2rem 0;
+}
+
+/* ===== Card Design ===== */
+.preview-card {
+  background: var(--lighter);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.preview-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.preview-card.featured {
+  border: 2px solid var(--primary);
+}
+
+/* ===== Badges ===== */
+.card-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: var(--secondary);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  z-index: 2;
+}
+
+/* ===== Image Section ===== */
+.image-container {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.article-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.preview-card:hover .article-image {
+  transform: scale(1.08);
+}
+
+.image-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
+}
+
+/* ===== Content Area ===== */
+.card-content {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+}
+
+.category {
+  background: rgba(94,114,228,0.1);
+  color: var(--primary);
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-weight: 600;
+}
+
+.date {
+  color: var(--gray);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.title {
+  font-size: 1.4rem;
+  color: var(--darker);
+  margin: 0 0 1rem 0;
+  line-height: 1.4;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.excerpt {
+  color: var(--gray);
+  margin: 0 0 1.5rem 0;
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* ===== Footer ===== */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--light-gray);
+  padding-top: 1rem;
+  margin-top: auto;
+}
+
+.read-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.read-btn:hover {
+  color: var(--primary-light);
+  transform: translateX(5px);
+}
+
+.stats {
+  display: flex;
+  gap: 15px;
+}
+
+.time, .rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.85rem;
+  color: var(--gray);
+}
+
+.rating {
+  color: #FFC107;
+}
+
+/* ===== Dark Mode ===== */
+.dark-mode .preview-card {
+  background: var(--light);
+}
+
+.dark-mode .title {
+  color: var(--dark);
+}
+
+.dark-mode .card-footer {
+  border-top-color: var(--light-gray);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .articles-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .image-container {
+    height: 220px;
+  }
+}
+.preview-card {
+    margin-bottom: 30px; /* Space below each card */
+}
+
+/* OR if you want more control: */
+.mb-30 {
+    margin-bottom: 30px !important;
+}
+
+/* For responsive spacing */
+@media (max-width: 768px) {
+    .preview-card {
+        margin-bottom: 20px;
+    }
+}
+.preview-card {
+    transition: box-shadow 0.3s ease !important;
+    position: relative; /* Ensures z-index works */
+}
+
+.preview-card:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
