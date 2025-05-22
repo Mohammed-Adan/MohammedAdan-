@@ -2976,7 +2976,4 @@ body.dark-mode .card-desc { color: #cbd5e1; }
 
 .islamic-card.secondary .islamic-card-content { border-left-color: rgba(245, 54, 92, 0.3); }
 
-
-
-
-
+ :root { --card-bg: #f9fafb; --card-border: #d1d5db; --card-text: #374151; --card-icon: #3b82f6; }
