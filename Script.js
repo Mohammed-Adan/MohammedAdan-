@@ -42,95 +42,122 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-// ========== UNIVERSAL SMOOTH NAVIGATION SYSTEM ==========
-function setupNavigation() {
-    // Track if we're coming from an article (any article page)
-    const isArticlePage = window.location.pathname.includes("article");
-    const isIndexPage = window.location.pathname.includes("index.html");
+// ========== PERFECT SMOOTH NAVIGATION SYSTEM ==========
+let isNavigating = false;
 
-    // Save scroll position before leaving any page
+function setupNavigation() {
+    // Track page types
+    const isArticlePage = /article\d*\.html/i.test(window.location.pathname);
+    const isIndexPage = /index\.html$/i.test(window.location.pathname);
+
+    // Improved click handler for all navigation
     document.addEventListener('click', function(e) {
-        const articleLink = e.target.closest('.read-btn, .read-more-btn');
-        const backButton = e.target.closest('.back-home-btn');
+        const articleLink = e.target.closest('[data-navigate="article"]');
+        const backButton = e.target.closest('[data-navigate="home"]');
         
-        if (articleLink) {
+        if (articleLink && !isNavigating) {
             e.preventDefault();
+            isNavigating = true;
+            
+            // Save current state
             const articleId = articleLink.closest('.article-preview')?.id;
             if (articleId) {
-                localStorage.setItem('lastArticleId', articleId);
-                localStorage.setItem('lastScrollPosition', window.scrollY.toString());
+                sessionStorage.setItem('lastArticleId', articleId);
+                sessionStorage.setItem('lastScrollPosition', window.scrollY.toString());
             }
-            localStorage.setItem('comingFromArticle', 'false');
-            window.location.href = articleLink.getAttribute('href');
+            
+            // Add loading class to body
+            document.body.classList.add('page-transition');
+            
+            // Delay navigation to allow CSS transition
+            setTimeout(() => {
+                window.location.href = articleLink.getAttribute('href');
+            }, 300);
         }
         
-        if (backButton && isArticlePage) {
+        if (backButton && isArticlePage && !isNavigating) {
             e.preventDefault();
-            localStorage.setItem('comingFromArticle', 'true');
-            window.location.href = 'index.html';
+            isNavigating = true;
+            
+            // Set transition direction
+            document.body.classList.add('page-transition', 'returning-home');
+            
+            setTimeout(() => {
+                window.location.href = backButton.getAttribute('href');
+            }, 300);
         }
     });
 
-    // Handle scroll restoration for all scenarios
-    window.addEventListener('load', function() {
-        // Coming from another article to a new article
-        if (isArticlePage && localStorage.getItem('comingFromArticle') === 'true') {
-            document.body.style.opacity = '0';
-            window.scrollTo({ top: 0, behavior: 'instant' });
-            setTimeout(() => {
-                document.body.style.opacity = '1';
-                localStorage.removeItem('comingFromArticle');
-            }, 100);
-        }
-        // Coming back to index from any article
-        else if (isIndexPage) {
-            const lastArticleId = localStorage.getItem('lastArticleId');
-            const lastScrollPosition = localStorage.getItem('lastScrollPosition');
+    // Handle page entrance animations
+    window.addEventListener('DOMContentLoaded', function() {
+        // Coming back to index from article
+        if (isIndexPage) {
+            const lastArticleId = sessionStorage.getItem('lastArticleId');
+            const lastScrollPosition = sessionStorage.getItem('lastScrollPosition');
             
             if (lastScrollPosition) {
-                document.body.style.opacity = '0';
-                document.body.style.transition = 'opacity 0.4s';
+                document.body.classList.add('page-loading');
                 
-                // First scroll to approximate position
-                window.scrollTo({
-                    top: parseInt(lastScrollPosition),
-                    behavior: 'smooth'
-                });
-
-                // Then fine-tune to exact article position
-                if (lastArticleId) {
-                    setTimeout(() => {
-                        const articlePreview = document.getElementById(lastArticleId);
-                        if (articlePreview) {
-                            const targetPosition = articlePreview.getBoundingClientRect().top + 
-                                                window.scrollY - 20; // 20px offset
-                            
-                            window.scrollTo({
-                                top: targetPosition,
-                                behavior: 'smooth'
-                            });
-
-                            // Visual feedback
-                            articlePreview.style.transition = 'box-shadow 0.3s';
-                            articlePreview.style.boxShadow = '0 0 0 3px rgba(0,150,255,0.3)';
-                            setTimeout(() => articlePreview.style.boxShadow = 'none', 1500);
-                        }
-                    }, 500);
-                }
-
-                setTimeout(() => document.body.style.opacity = '1', 100);
-                localStorage.removeItem('lastArticleId');
-                localStorage.removeItem('lastScrollPosition');
-                localStorage.removeItem('comingFromArticle');
+                // Wait for all assets to load
+                const checkReady = () => {
+                    if (document.readyState === 'complete') {
+                        restoreScrollPosition(lastArticleId, lastScrollPosition);
+                    } else {
+                        setTimeout(checkReady, 100);
+                    }
+                };
+                checkReady();
             }
+        }
+        // Coming to article from anywhere
+        else if (isArticlePage) {
+            document.body.classList.add('page-loading');
+            setTimeout(() => {
+                document.body.classList.remove('page-loading');
+            }, 600);
         }
     });
 }
 
-// Initialize with improved timing
-document.addEventListener('DOMContentLoaded', function() {
-    setTimeout(setupNavigation, 50);
-});
+function restoreScrollPosition(articleId, scrollPosition) {
+    // Initial immediate scroll (hidden by opacity)
+    window.scrollTo(0, parseInt(scrollPosition));
+    
+    // Wait for next frame
+    requestAnimationFrame(() => {
+        // Smooth scroll to final position
+        if (articleId) {
+            const articleElement = document.getElementById(articleId);
+            if (articleElement) {
+                const targetPosition = articleElement.getBoundingClientRect().top + 
+                                    window.scrollY - 20; // 20px offset
+                
+                setTimeout(() => {
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Highlight animation
+                    articleElement.classList.add('return-highlight');
+                    setTimeout(() => {
+                        articleElement.classList.remove('return-highlight');
+                    }, 1500);
+                }, 50);
+            }
+        }
+        
+        // Fade in content
+        setTimeout(() => {
+            document.body.classList.remove('page-loading');
+            sessionStorage.removeItem('lastArticleId');
+            sessionStorage.removeItem('lastScrollPosition');
+        }, 100);
+    });
+}
+
+// Initialize with slight delay
+setTimeout(setupNavigation, 50);
 
     // ========== READING TIME CALCULATOR ==========
     function calculateReadingTime() {
