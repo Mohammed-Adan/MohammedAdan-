@@ -42,94 +42,95 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ========== NAVIGATION SYSTEM ==========
+// ========== UNIVERSAL SMOOTH NAVIGATION SYSTEM ==========
 function setupNavigation() {
-    const isArticlePage = window.location.pathname.includes("article.html");
+    // Track if we're coming from an article (any article page)
+    const isArticlePage = window.location.pathname.includes("article");
+    const isIndexPage = window.location.pathname.includes("index.html");
 
-    // Handle article links - save scroll position before leaving
-    if (!isArticlePage) {
-        document.querySelectorAll('.read-btn, .read-more-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                const articleId = this.closest('.article-preview')?.id;
-                if (articleId) {
-                    // Save both the article ID and current scroll position
-                    localStorage.setItem('lastArticleId', articleId);
-                    localStorage.setItem('lastScrollPosition', window.scrollY.toString());
-                }
-                window.location.href = this.getAttribute('href');
-            });
-        });
-    }
-
-    // Handle back button
-    if (isArticlePage) {
-        const backBtn = document.querySelector('.back-home-btn');
-        if (backBtn) {
-            backBtn.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.location.href = 'index.html';
-            });
+    // Save scroll position before leaving any page
+    document.addEventListener('click', function(e) {
+        const articleLink = e.target.closest('.read-btn, .read-more-btn');
+        const backButton = e.target.closest('.back-home-btn');
+        
+        if (articleLink) {
+            e.preventDefault();
+            const articleId = articleLink.closest('.article-preview')?.id;
+            if (articleId) {
+                localStorage.setItem('lastArticleId', articleId);
+                localStorage.setItem('lastScrollPosition', window.scrollY.toString());
+            }
+            localStorage.setItem('comingFromArticle', 'false');
+            window.location.href = articleLink.getAttribute('href');
         }
-    }
+        
+        if (backButton && isArticlePage) {
+            e.preventDefault();
+            localStorage.setItem('comingFromArticle', 'true');
+            window.location.href = 'index.html';
+        }
+    });
 
-    // On index page - restore scroll position if returning from article
-    if (!isArticlePage) {
-        const lastArticleId = localStorage.getItem('lastArticleId');
-        const lastScrollPosition = localStorage.getItem('lastScrollPosition');
-
-        if (lastScrollPosition) {
-            // Hide the body temporarily to prevent jump
+    // Handle scroll restoration for all scenarios
+    window.addEventListener('load', function() {
+        // Coming from another article to a new article
+        if (isArticlePage && localStorage.getItem('comingFromArticle') === 'true') {
             document.body.style.opacity = '0';
-            document.body.style.transition = 'opacity 0.3s';
-
-            // Wait for everything to load
-            window.addEventListener('load', () => {
-                // First scroll smoothly to the approximate position
+            window.scrollTo({ top: 0, behavior: 'instant' });
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+                localStorage.removeItem('comingFromArticle');
+            }, 100);
+        }
+        // Coming back to index from any article
+        else if (isIndexPage) {
+            const lastArticleId = localStorage.getItem('lastArticleId');
+            const lastScrollPosition = localStorage.getItem('lastScrollPosition');
+            
+            if (lastScrollPosition) {
+                document.body.style.opacity = '0';
+                document.body.style.transition = 'opacity 0.4s';
+                
+                // First scroll to approximate position
                 window.scrollTo({
                     top: parseInt(lastScrollPosition),
                     behavior: 'smooth'
                 });
 
-                // Then fine-tune to the exact article position
+                // Then fine-tune to exact article position
                 if (lastArticleId) {
                     setTimeout(() => {
                         const articlePreview = document.getElementById(lastArticleId);
                         if (articlePreview) {
                             const targetPosition = articlePreview.getBoundingClientRect().top + 
-                                                  window.scrollY - 
-                                                  (CONFIG.scrollOffset || 20);
+                                                window.scrollY - 20; // 20px offset
                             
                             window.scrollTo({
                                 top: targetPosition,
                                 behavior: 'smooth'
                             });
 
-                            // Add visual feedback
+                            // Visual feedback
                             articlePreview.style.transition = 'box-shadow 0.3s';
-                            articlePreview.style.boxShadow = '0 0 0 2px rgba(0,150,255,0.3)';
-                            setTimeout(() => {
-                                articlePreview.style.boxShadow = 'none';
-                            }, 1500);
+                            articlePreview.style.boxShadow = '0 0 0 3px rgba(0,150,255,0.3)';
+                            setTimeout(() => articlePreview.style.boxShadow = 'none', 1500);
                         }
-                    }, 500); // Wait for first scroll to complete
+                    }, 500);
                 }
 
-                // Show the body with fade-in effect
-                setTimeout(() => {
-                    document.body.style.opacity = '1';
-                }, 100);
-
-                // Clean up
+                setTimeout(() => document.body.style.opacity = '1', 100);
                 localStorage.removeItem('lastArticleId');
                 localStorage.removeItem('lastScrollPosition');
-            });
+                localStorage.removeItem('comingFromArticle');
+            }
         }
-    }
+    });
 }
 
-// Initialize navigation system
-document.addEventListener('DOMContentLoaded', setupNavigation);
+// Initialize with improved timing
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(setupNavigation, 50);
+});
 
     // ========== READING TIME CALCULATOR ==========
     function calculateReadingTime() {
