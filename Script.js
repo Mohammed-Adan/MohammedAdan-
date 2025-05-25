@@ -43,58 +43,93 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ========== NAVIGATION SYSTEM ==========
-    function setupNavigation() {
-        // Handle article links - scroll to top when navigating to article
-        if (!isArticlePage) {
-            document.querySelectorAll('.read-btn, .read-more-btn').forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    // Force scroll to top on the new page
-                    localStorage.setItem('forceScrollTop', 'true');
-                    window.location.href = this.getAttribute('href');
-                });
+function setupNavigation() {
+    const isArticlePage = window.location.pathname.includes("article.html");
+
+    // Handle article links - save scroll position before leaving
+    if (!isArticlePage) {
+        document.querySelectorAll('.read-btn, .read-more-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const articleId = this.closest('.article-preview')?.id;
+                if (articleId) {
+                    // Save both the article ID and current scroll position
+                    localStorage.setItem('lastArticleId', articleId);
+                    localStorage.setItem('lastScrollPosition', window.scrollY.toString());
+                }
+                window.location.href = this.getAttribute('href');
+            });
+        });
+    }
+
+    // Handle back button
+    if (isArticlePage) {
+        const backBtn = document.querySelector('.back-home-btn');
+        if (backBtn) {
+            backBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'index.html';
             });
         }
+    }
 
-        // Handle back button - save scroll position
-        if (isArticlePage) {
-            const backBtn = document.querySelector('.back-home-btn');
-            if (backBtn) {
-                backBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const articleId = document.querySelector('.article-detail').id;
-                    if (articleId) {
-                        localStorage.setItem('lastArticleId', articleId);
-                    }
-                    window.location.href = 'index.html';
+    // On index page - restore scroll position if returning from article
+    if (!isArticlePage) {
+        const lastArticleId = localStorage.getItem('lastArticleId');
+        const lastScrollPosition = localStorage.getItem('lastScrollPosition');
+
+        if (lastScrollPosition) {
+            // Hide the body temporarily to prevent jump
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.3s';
+
+            // Wait for everything to load
+            window.addEventListener('load', () => {
+                // First scroll smoothly to the approximate position
+                window.scrollTo({
+                    top: parseInt(lastScrollPosition),
+                    behavior: 'smooth'
                 });
-            }
-        }
 
-        // On article pages - scroll to top if needed
-        if (isArticlePage && localStorage.getItem('forceScrollTop')) {
-            window.scrollTo(0, 0);
-            localStorage.removeItem('forceScrollTop');
-        }
-
-        // On index page - restore scroll position if returning from article
-        if (!isArticlePage) {
-            const lastArticleId = localStorage.getItem('lastArticleId');
-            if (lastArticleId) {
-                const articlePreview = document.getElementById(lastArticleId);
-                if (articlePreview) {
+                // Then fine-tune to the exact article position
+                if (lastArticleId) {
                     setTimeout(() => {
-                        const previewRect = articlePreview.getBoundingClientRect();
-                        window.scrollTo({
-                            top: previewRect.top + window.scrollY - CONFIG.scrollOffset,
-                            behavior: 'smooth'
-                        });
-                        localStorage.removeItem('lastArticleId');
-                    }, 100);
+                        const articlePreview = document.getElementById(lastArticleId);
+                        if (articlePreview) {
+                            const targetPosition = articlePreview.getBoundingClientRect().top + 
+                                                  window.scrollY - 
+                                                  (CONFIG.scrollOffset || 20);
+                            
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+
+                            // Add visual feedback
+                            articlePreview.style.transition = 'box-shadow 0.3s';
+                            articlePreview.style.boxShadow = '0 0 0 2px rgba(0,150,255,0.3)';
+                            setTimeout(() => {
+                                articlePreview.style.boxShadow = 'none';
+                            }, 1500);
+                        }
+                    }, 500); // Wait for first scroll to complete
                 }
-            }
+
+                // Show the body with fade-in effect
+                setTimeout(() => {
+                    document.body.style.opacity = '1';
+                }, 100);
+
+                // Clean up
+                localStorage.removeItem('lastArticleId');
+                localStorage.removeItem('lastScrollPosition');
+            });
         }
     }
+}
+
+// Initialize navigation system
+document.addEventListener('DOMContentLoaded', setupNavigation);
 
     // ========== READING TIME CALCULATOR ==========
     function calculateReadingTime() {
