@@ -3173,3 +3173,43 @@ body.dark-mode .card-desc { color: #cbd5e1; }
 @keyframes patternFloat {
     100% { transform: rotate(360deg); }
 }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(94, 114, 228, 0.1);
+    background: linear-gradient(to right, var(--lighter), rgba(94, 114, 228, 0.03));
+  }
+  
+  .solution-item:hover {
+    transform: translateX(5px);
+    background: rgba(94, 114, 228, 0.1) !important;
+  }
+  
+  .highlight-text {
+    transition: all 0.3s ease;
+  }
+  
+  .highlight-text:hover {
+    background: linear-gradient(to right, rgba(94, 114, 228, 0.3), transparent) !important;
+  }
+  
+  .warning-box:hover {
+    box-shadow: 0 5px 15px rgba(245, 54, 92, 0.1);
+  }
+  
+  .final-note:hover {
+    background: linear-gradient(to right, rgba(94, 114, 228, 0.15), transparent);
+  }
+  
+  /* Dark mode adjustments */
+  .dark-mode .card {
+    background: var(--light);
+  }
+  
+  .dark-mode .solution-item {
+    background: rgba(94, 114, 228, 0.1) !important;
+  }
+  
+  .dark-mode .final-note {
+    background: linear-gradient(to right, rgba(94, 114, 228, 0.2), transparent);
+  }
