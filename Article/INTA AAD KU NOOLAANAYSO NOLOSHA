@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta name="description" content="Faham marxaladaha nolosha Aadanaha laga bilaabo caloosha ilaa qabriga. Baro doorka Diinta Islaamka ee ku leedahay noloshaada, si aad u gaarto Janno iyo farxad nolosha labada daar Alle idamkii.">
+<meta name="keywords" content="nolosha Aadanaha, marxaladaha nolosha, Diinta Islaamka, aakhiro, janno iyo naar, xigmado diini ah, sheekh Mustafe Haaruun, nolosha muslimka, faa'iidada cilmiga diinta, nolosha iyo aakhiro, talooyin diini ah, Reys Aqoon">
+<meta name="author" content="Mohammed Adan">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INTA AAD KU NOOLAANAYSO NOLOSHAN</title>
+    <meta name="google-site-verification" content="google2f7cca9a3b9b15bc.html">
+    <meta name="google-site-verification" content="zk7a_QvOQhhR1ywV1vJ5UJXoaTRxiK8RaTtxlpIhTz8" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div id="greeting"></div>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">REYS<span>AQOON</span></a>
+                <button class="dark-mode-toggle" id="darkModeToggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+<div id="articleDetails">
+          <div class="container">
+    <article class="article-detail" id="Diinta & Nolosha">
+    <img src="images/isco-7OeiQTVXvnQ-unsplash.jpg" class="article-image" alt="Malware iyo Virus">
+    <div class="article-content">
+        <div class="article-date">
+            <i class="far fa-calendar"></i> <span class="date">Jun 02, 2025</span>
+        </div>
+        <h1 class="article-title">INTA AAD KU NOOLAANAYSO NOLOSHA</h1>
+
+
+  
+  <!-- Decorative elements -->
+  <div style="position: absolute; top: 0; right: 0; width: 120px; height: 120px; background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%); z-index: 0;"></div>
+  <div style="position: absolute; bottom: -30px; left: -30px; width: 100px; height: 100px; border-radius: 50%; border: 2px dashed var(--primary-light); opacity: 0.3; z-index: 0;"></div>
+  
+  <div style="position: relative; z-index: 1;">
+
+      <div style="width: 80px; height: 3px; background: linear-gradient(to right, var(--primary), var(--secondary)); margin: 0.5rem auto 0; border-radius: 3px;"></div>
+    </div>
+    
+    <!-- Article Content -->
+    <div class="article-text" style="font-size: 1.1rem; line-height: 1.8; color: var(--dark);">
+      <p style="margin-bottom: 1.5rem;">
+        Noloshu intaad noolaanayso markaad eegto xilliyo ayaad soo maraysaa:
+      </p>
+      
+<!-- Enhanced Timeline Visualization -->
+<div class="timeline-container" style="margin: 2.5rem 0; position: relative;">
+  <!-- Timeline line -->
+  <div style="position: absolute; left: 12px; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, var(--primary), var(--secondary)); z-index: 1;"></div>
+  
+  <ul style="list-style: none; padding: 0; margin: 0; position: relative; z-index: 2;">
+    <!-- Timeline Item 1 -->
+    <li style="position: relative; padding-left: 3rem; margin-bottom: 2rem;">
+      <div style="position: absolute; left: 0; top: 0; width: 26px; height: 26px; background-color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem; font-weight: bold; box-shadow: 0 0 0 4px rgba(94, 114, 228, 0.2); z-index: 2;">
+        1
+      </div>
+      <div style="background: var(--lighter); border-radius: 12px; padding: 1.25rem; box-shadow: var(--shadow-sm); border: 1px solid var(--light-gray); transition: all 0.3s ease;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 0.5rem;">
+          <i class="fas fa-seedling" style="color: var(--primary); font-size: 1.2rem;"></i>
+          <h3 style="margin: 0; font-size: 1.1rem; color: var(--darker);">Dhabarka Waalidka</h3>
+        </div>
+        <p style="margin: 0; color: var(--dark); line-height: 1.6;">Waqti aad dhabarka aabahaa iyo hooyadaa ku jirtay</p>
+      </div>
+    </li>
+    
+    <!-- Timeline Item 2 -->
+    <li style="position: relative; padding-left: 3rem; margin-bottom: 2rem;">
+      <div style="position: absolute; left: 0; top: 0; width: 26px; height: 26px; background-color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem; font-weight: bold; box-shadow: 0 0 0 4px rgba(94, 114, 228, 0.2); z-index: 2;">
+        2
+      </div>
+      <div style="background: var(--lighter); border-radius: 12px; padding: 1.25rem; box-shadow: var(--shadow-sm); border: 1px solid var(--light-gray); transition: all 0.3s ease;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 0.5rem;">
+          <i class="fas fa-baby" style="color: var(--primary); font-size: 1.2rem;"></i>
+          <h3 style="margin: 0; font-size: 1.1rem; color: var(--darker);">Caloosha Hooyo</h3>
+        </div>
+        <p style="margin: 0; color: var(--dark); line-height: 1.6;">Waqti aad caloosha hooyadaa ku jirtay</p>
+      </div>
+    </li>
+    
+    <!-- Timeline Item 3 -->
+    <li style="position: relative; padding-left: 3rem; margin-bottom: 2rem;">
+      <div style="position: absolute; left: 0; top: 0; width: 26px; height: 26px; background-color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem; font-weight: bold; box-shadow: 0 0 0 4px rgba(94, 114, 228, 0.2); z-index: 2;">
+        3
+      </div>
+      <div style="background: var(--lighter); border-radius: 12px; padding: 1.25rem; box-shadow: var(--shadow-sm); border: 1px solid var(--light-gray); transition: all 0.3s ease;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 0.5rem;">
+          <i class="fas fa-child" style="color: var(--primary); font-size: 1.2rem;"></i>
+          <h3 style="margin: 0; font-size: 1.1rem; color: var(--darker);">Dunida Korkeeda</h3>
+        </div>
+        <p style="margin: 0; color: var(--dark); line-height: 1.6;">Waqti aad dunida korkeeda saarnayd</p>
+      </div>
+    </li>
+    
+    <!-- Timeline Item 4 -->
+    <li style="position: relative; padding-left: 3rem; margin-bottom: 2rem;">
+      <div style="position: absolute; left: 0; top: 0; width: 26px; height: 26px; background-color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem; font-weight: bold; box-shadow: 0 0 0 4px rgba(94, 114, 228, 0.2); z-index: 2;">
+        4
+      </div>
+      <div style="background: var(--lighter); border-radius: 12px; padding: 1.25rem; box-shadow: var(--shadow-sm); border: 1px solid var(--light-gray); transition: all 0.3s ease;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 0.5rem;">
+          <i class="fas fa-circle-dot" style="color: var(--primary); font-size: 1.2rem;"></i>
+          <h3 style="margin: 0; font-size: 1.1rem; color: var(--darker);">Qabri</h3>
+        </div>
+        <p style="margin: 0; color: var(--dark); line-height: 1.6;">Waqti aad xabaal ku jirtay</p>
+      </div>
+    </li>
+    
+    <!-- Timeline Item 5 -->
+    <li style="position: relative; padding-left: 3rem;">
+      <div style="position: absolute; left: 0; top: 0; width: 26px; height: 26px; background-color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem; font-weight: bold; box-shadow: 0 0 0 4px rgba(94, 114, 228, 0.2); z-index: 2;">
+        5
+      </div>
+      <div style="background: var(--lighter); border-radius: 12px; padding: 1.25rem; box-shadow: var(--shadow-sm); border: 1px solid var(--light-gray); transition: all 0.3s ease;">
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 0.5rem;">
+          <i class="fas fa-scale-balanced" style="color: var(--primary); font-size: 1.2rem;"></i>
+          <h3 style="margin: 0; font-size: 1.1rem; color: var(--darker);">Ugu Dambeyntii</h3>
+        </div>
+        <p style="margin: 0; color: var(--dark); line-height: 1.6;">
+          Kadibna waad ka soo baxaysaa, waxaad ku dambaynaysaa 
+          <span style="font-weight: bold; color: var(--primary); background: rgba(94, 114, 228, 0.1); padding: 2px 6px; border-radius: 4px;">JANNO</span> ama 
+          <span style="font-weight: bold; color: var(--secondary); background: rgba(245, 54, 92, 0.1); padding: 2px 6px; border-radius: 4px;">NAAR</span>
+        </p>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<style>
+  .timeline-container li div:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-light);
+  }
+  
+  .dark-mode .timeline-container li div {
+    background: var(--light);
+    border-color: var(--light-gray);
+  }
+  
+  .timeline-container li div {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .timeline-container li div::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--primary), var(--secondary));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .timeline-container li div:hover::after {
+    opacity: 1;
+  }
+</style>
+      
+      <p style="margin: 1.5rem 0;">
+        Noloshaas dhan marka la isku daro, Diinta Islaamka intey ka tartaa? Inta ugu qaalisan bay ka tartaa; hadday tahay noloshan aad ku nooshahay iyada ayaa tilmaamaysa inaad si toosan ugu noolaato, hadday tahay tan aakhirana iyada ayaa waxa ugu weyn oo ugu qaalisan keenta.
+      </p>
+      
+<!-- Enhanced Example Box -->
+<div class="example-box" style="background: linear-gradient(to right, rgba(94, 114, 228, 0.05), rgba(94, 114, 228, 0.1)); border-left: 4px solid var(--primary); padding: 1.5rem; border-radius: 12px; margin: 2.5rem 0; position: relative; overflow: hidden; transition: all 0.3s ease;">
+  <!-- Decorative elements -->
+  <div style="position: absolute; top: -20px; right: -20px; width: 80px; height: 80px; background: radial-gradient(circle, rgba(94, 114, 228, 0.15) 0%, transparent 70%); z-index: 0;"></div>
+  
+  <div style="position: relative; z-index: 1; display: flex; gap: 1rem;">
+    <div style="flex-shrink: 0; width: 50px; height: 50px; background: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; box-shadow: 0 4px 12px rgba(94, 114, 228, 0.3);">
+      <i class="fas fa-lightbulb"></i>
+    </div>
+    
+    <div>
+      <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 0.5rem;">
+        <div style="width: 20px; height: 2px; background: var(--primary);"></div>
+        <h3 style="margin: 0; font-size: 1.1rem; color: var(--primary); font-family: 'Montserrat', sans-serif;">TUSAAALE</h3>
+      </div>
+      
+      <p style="margin: 0; color: var(--darker); line-height: 1.7; font-size: 1.05rem;">
+        Inaad barato cilmi ku saabsan <Strong>Quraanka</strong> ama <strong>Rabbiga</strong> abuuray dunida, waa ka qaalisan tahay inaad barato cilmi bini'aadan ku saabsan.
+      </p>
+      
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .example-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(94, 114, 228, 0.15);
+    border-left-width: 6px;
+  }
+  
+  .dark-mode .example-box {
+    background: linear-gradient(to right, rgba(94, 114, 228, 0.1), rgba(94, 114, 228, 0.15));
+  }
+  
+  .dark-mode .example-box h3 {
+    color: var(--primary-light);
+  }
+</style>
+      
+      <!-- Quote -->
+      <blockquote style="margin: 2rem 0; padding: 1.5rem; background: rgba(245, 54, 92, 0.05); border-left: 4px solid var(--secondary); border-radius: 8px; font-style: italic; color: var(--darker);">
+        <p style="margin: 0;">
+          Waa hadal uu yiri <strong>Sheekh Mustafe Haaruun</strong>. Muhiimaddu waxay tahay in aan baranno <span style="font-weight: bold; color: var(--primary);">cilmiga diinta</span>, waayo dhan walba wuu inaga toosinayaa. Qaab nololeedkeennu iyada ayaa u samaysa waxtar iyo qiimo – tan adduun iyo tan aakhiroba, waayo waa middii ku habboonayd labada daaroodba.
+        </p>
+      </blockquote>
+    </div>
+    
+    
+    <!-- Signature -->
+    <div style="text-align: left; margin-top: 1rem;">
+      <p style="font-size: 0.9rem; color: var(--gray); margin: 0;">
+      
+        <strong style="color: var(--primary);">Mohammed Adan</strong>
+      </p>
+    </div>
+  
+</main>
+
+<style>
+  .lifespan-article:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary-light);
+  }
+  
+  .dark-mode .lifespan-article {
+    background: var(--light);
+    border-color: var(--light-gray);
+  }
+  
+  .dark-mode blockquote {
+    background: rgba(245, 54, 92, 0.1);
+  }
+</style>
+                <div class="rating-container">
+    <p>Maqaalkan miyuu ku caawiyay, Akhriste?</p>
+    <div class="stars">
+        <span class="star" data-value="1">★</span>
+        <span class="star" data-value="2">★</span>
+        <span class="star" data-value="3">★</span>
+        <span class="star" data-value="4">★</span>
+        <span class="star" data-value="5">★</span>
+    </div>
+    <p class="rating-feedback" style="display: none; margin-top: 10px;"></p>
+</div>
+    <div class="back-home-container">
+                    <a href="index.html#malware-iyo-virus" class="btn btn-outline back-home-btn">
+                        <i class="fas fa-arrow-left"></i> Dib u laabo
+                    </a>
+                </div>
+            </div>
+        </article>
+        </div>
+        </main>
+
+    <!-- Footer section -->
+    <footer>
+        <div class="container">
+            <div class="footer-line">
+                <a href="https://wa.me/252614008340" class="footer-contact-link">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <span class="footer-separator">|</span>
+                <a href="mailto:mohammedaden8340@gmail.com" class="footer-link">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+            </div>
+            <p class="copyright">© 2025 REYS AQOON. Dhammaan xuquuqda way dhawran tahay.</p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>
