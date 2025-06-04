@@ -376,3 +376,160 @@ setTimeout(setupNavigation, 50);
     setupStarRatings();
     setupAnimations();
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  const searchForm = document.getElementById('searchForm');
+  const searchInput = document.getElementById('searchInput');
+  const searchResults = document.getElementById('searchResults');
+  
+  // Sample articles data (replace with your actual articles)
+  const articles = [
+    {
+      id: 'ChatGPT!',
+      title:'ChatGPT wuxuu noqon karaa marin aad ku lumin karto garashadaada.!',
+      excerpt:'ChatGPT aad buu kuu taageeraa, mararka qaarna si aan kala sooc lahayn ayuuba u taageeraa fikrad kasta oo aad la timaaddo..',
+      date:'May 29,2025'
+    },
+    {
+      id: 'xifdinta-maskaxda',
+      title: 'Sida Maskaxdu u Kaydiso Macluumaadka',
+      excerpt: 'Baro habka cilmi-nafsiyadeed ee ay maskaxdu u xifdo macluumaadka...',
+      date: 'May 14, 2025'
+    },
+    {
+      id: 'malware-iyo-virus',
+      title: 'MALWARE IYO VIRUS – WAA MAXAY?',
+      excerpt: 'Aqoonta muhiimka ah ee ku saabsan malware, virus...',
+      date: 'May 8, 2025'
+    },
+    {
+      id: 'cadaadiska-nafeed',
+      title: 'CADAADISKA NAFTA',
+      excerpt: 'Fahanka cadaadiska nafeed iyo sida loola dhaqmo...',
+      date: 'April 30, 2025'
+    },
+    {
+      id: 'labada nooc ee aqoonta',
+      title: 'LABADA NOOC EE AQOONTA',
+      excerpt: 'Waxaa jira laba nooc oo aqoon ah oo aan faa\'iido kuu lahayn...',
+      date: 'April 29, 2025'
+    },
+    {
+  id: 'DUCO-KU-DHOW-AQBALAADDA!',
+  title: 'DUCO KU DHOW AQBALAADDA!',
+  excerpt: 'Tilmaamo wax tar leh oo uu qofka Muslimka ah u sahlaya inuu duco u jeediyo Rabbigiis si niyad-sami iyo aqbalaad leh...',
+  date: 'May 27, 2025',
+  category: 'Tilmaamaha Ducada',
+  image: '/Picture/pray-7741275_1280.png'
+}
+  ];
+
+  // Search function
+  function performSearch(query) {
+    if (!query.trim()) {
+      searchResults.style.display = 'none';
+      return;
+    }
+
+    const results = articles.filter(article => 
+      article.title.toLowerCase().includes(query.toLowerCase()) || 
+      article.excerpt.toLowerCase().includes(query.toLowerCase())
+    );
+
+    displayResults(results);
+  }
+
+  // Display results
+  function displayResults(results) {
+    searchResults.innerHTML = '';
+
+    if (results.length === 0) {
+      searchResults.innerHTML = '<div class="no-results">Ma jiro maqaal la heli karo</div>';
+      searchResults.style.display = 'block';
+      return;
+    }
+
+    results.forEach(article => {
+      const resultItem = document.createElement('div');
+      resultItem.className = 'search-result-item';
+      resultItem.innerHTML = `
+        <h4>${article.title}</h4>
+        <p>${article.excerpt.substring(0, 80)}...</p>
+        <small>${article.date}</small>
+      `;
+      
+      resultItem.addEventListener('click', () => {
+        window.location.hash = article.id;
+        searchResults.style.display = 'none';
+        searchInput.value = '';
+      });
+      
+      searchResults.appendChild(resultItem);
+    });
+
+    searchResults.style.display = 'block';
+  }
+
+  // Event listeners
+  searchForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    performSearch(searchInput.value);
+  });
+
+  searchInput.addEventListener('input', function() {
+    performSearch(this.value);
+  });
+
+  // Close results when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!searchForm.contains(e.target)) {
+      searchResults.style.display = 'none';
+    }
+  });
+
+  // Keyboard navigation
+  searchInput.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+      e.preventDefault();
+      const items = searchResults.querySelectorAll('.search-result-item');
+      if (items.length === 0) return;
+      
+      let currentIndex = -1;
+      items.forEach((item, index) => {
+        if (item.classList.contains('highlighted')) {
+          item.classList.remove('highlighted');
+          currentIndex = index;
+        }
+      });
+      
+      if (e.key === 'ArrowDown') {
+        currentIndex = (currentIndex + 1) % items.length;
+      } else {
+        currentIndex = (currentIndex - 1 + items.length) % items.length;
+      }
+      
+      items[currentIndex].classList.add('highlighted');
+      items[currentIndex].scrollIntoView({ block: 'nearest' });
+    } else if (e.key === 'Enter' && searchResults.style.display === 'block') {
+      const highlighted = searchResults.querySelector('.highlighted');
+      if (highlighted) {
+        highlighted.click();
+      }
+    }
+  });
+});
+// Add this at the beginning of your script
+   let articles = [];
+   
+   // Load articles when page loads
+   function loadArticles() {
+     document.querySelectorAll('.article-preview').forEach(preview => {
+       articles.push({
+         id: preview.dataset.article,
+         title: preview.querySelector('.article-title').textContent,
+         excerpt: preview.querySelector('.article-excerpt').textContent,
+         date: preview.querySelector('.date').textContent
+       });
+     });
+   }
+   
