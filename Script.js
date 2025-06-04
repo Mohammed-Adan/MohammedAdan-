@@ -427,7 +427,33 @@ document.addEventListener('DOMContentLoaded', function() {
     date: 'May 27, 2025',
     category: 'Tilmaamaha Ducada',
     image: '/Picture/pray-7741275_1280.png'
+  },
+
+  {
+    id: 'inta-boqolkiiba-maskaxda',
+    title: 'Maxay Tahay Awoodda Dhabta ah ee Maskaxdaada? Faham Xadka Ay Xasuusato!',
+    excerpt: 'Dadku si kala duwan bay wax u bartaan, balse waxaa jira habab cilmiyaysan..',
+    date: 'May 24, 2025',
+    category: 'Waxbarashada & Xifdinta',
+    image: 'images/what-is-learning-pyramid-cpd.jpg'
+  },
+  {
+    id: 'oraah-salafi',
+    title: 'Oraah Dahabi ah: “Cilmigu waa Diin...”',
+    excerpt: 'Imaam Maxamed ibn Siiriin wuxuu yiri: “Cilmigan waa diin ee fiiriya qofka aad ka qaadanaysaan diintiinna.” Oraahdan waxay xambaarsan tahay....',
+    date: 'May 22, 2025',
+    category: 'Diin & Xikmad',
+    image: 'images/bookWP-scaled.jpg'
+  },
+  {
+    id: 'guushii-ummadda',
+    title: 'Guushii Ummadda Soomaaliyeed: Qoraalka Farta Soomaaliga',
+    excerpt: 'Taariikhda qorista farta Af-Soomaaliga iyo saamaynta ay ku yeelatay horumarinta ummadda...',
+    date: 'May 19, 2025',
+    category: 'Taariikh',
+    image: '20250517_152544.jpg'
   }
+
 ];
 
   // Search function
