@@ -409,7 +409,7 @@ document.addEventListener('DOMContentLoaded', function() {
     date: 'April 30, 2025'
   },
   {
-    id: 'labada nooc ee aqoonta',
+    id: 'labada-nooc-ee-aqoonta',
     title: 'LABADA NOOC EE AQOONTA',
     excerpt: 'Waxaa jira laba nooc oo aqoon ah oo aan faa\'iido kuu lahayn...',
     date: 'April 29, 2025'
