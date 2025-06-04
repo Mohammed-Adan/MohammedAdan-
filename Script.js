@@ -396,6 +396,12 @@ document.addEventListener('DOMContentLoaded', function() {
       excerpt: 'Baro habka cilmi-nafsiyadeed ee ay maskaxdu u xifdo macluumaadka...',
       date: 'May 14, 2025'
     },
+id: 'Diinta-Nolosha',
+      title: 'INTA AAD KU NOOLAANAYSO NOLOSHA.!',
+      excerpt: '
+  Nolosha dhan marka la isku daro, Diinta Islaamka intey ka tartaa?...',
+      date: 'June 04, 2025'
+    },
     {
       id: 'malware-iyo-virus',
       title: 'MALWARE IYO VIRUS – WAA MAXAY?',
