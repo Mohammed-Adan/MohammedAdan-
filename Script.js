@@ -384,45 +384,51 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Sample articles data (replace with your actual articles)
   const articles = [
-    {
-      id: 'ChatGPT!',
-      title:'ChatGPT wuxuu noqon karaa marin aad ku lumin karto garashadaada.!',
-      excerpt:'ChatGPT aad buu kuu taageeraa, mararka qaarna si aan kala sooc lahayn ayuuba u taageeraa fikrad kasta oo aad la timaaddo..',
-      date:'May 29,2025'
-    },
-    {
-      id: 'xifdinta-maskaxda',
-      title: 'Sida Maskaxdu u Kaydiso Macluumaadka',
-      excerpt: 'Baro habka cilmi-nafsiyadeed ee ay maskaxdu u xifdo macluumaadka...',
-      date: 'May 14, 2025'
-    
-    {
-      id: 'malware-iyo-virus',
-      title: 'MALWARE IYO VIRUS – WAA MAXAY?',
-      excerpt: 'Aqoonta muhiimka ah ee ku saabsan malware, virus...',
-      date: 'May 8, 2025'
-    },
-    {
-      id: 'cadaadiska-nafeed',
-      title: 'CADAADISKA NAFTA',
-      excerpt: 'Fahanka cadaadiska nafeed iyo sida loola dhaqmo...',
-      date: 'April 30, 2025'
-    },
-    {
-      id: 'labada nooc ee aqoonta',
-      title: 'LABADA NOOC EE AQOONTA',
-      excerpt: 'Waxaa jira laba nooc oo aqoon ah oo aan faa\'iido kuu lahayn...',
-      date: 'April 29, 2025'
-    },
-    {
-  id: 'DUCO-KU-DHOW-AQBALAADDA!',
-  title: 'DUCO KU DHOW AQBALAADDA!',
-  excerpt: 'Tilmaamo wax tar leh oo uu qofka Muslimka ah u sahlaya inuu duco u jeediyo Rabbigiis si niyad-sami iyo aqbalaad leh...',
-  date: 'May 27, 2025',
-  category: 'Tilmaamaha Ducada',
-  image: '/Picture/pray-7741275_1280.png'
+  {
+    id: 'ChatGPT!',
+    title:'ChatGPT wuxuu noqon karaa marin aad ku lumin karto garashadaada.!',
+    excerpt:'ChatGPT aad buu kuu taageeraa, mararka qaarna si aan kala sooc lahayn ayuuba u taageeraa fikrad kasta oo aad la timaaddo..',
+    date:'May 29,2025'
+  },
+  {
+    id: 'xifdinta-maskaxda',
+    title: 'Sida Maskaxdu u Kaydiso Macluumaadka',
+    excerpt: 'Baro habka cilmi-nafsiyadeed ee ay maskaxdu u xifdo macluumaadka...',
+    date: 'May 14, 2025'
+  },
+  {
+    id: 'malware-iyo-virus',
+    title: 'MALWARE IYO VIRUS – WAA MAXAY?',
+    excerpt: 'Aqoonta muhiimka ah ee ku saabsan malware, virus...',
+    date: 'May 8, 2025'
+  },
+  {
+    id: 'cadaadiska-nafeed',
+    title: 'CADAADISKA NAFTA',
+    excerpt: 'Fahanka cadaadiska nafeed iyo sida loola dhaqmo...',
+    date: 'April 30, 2025'
+  },
+  {
+    id: 'labada nooc ee aqoonta',
+    title: 'LABADA NOOC EE AQOONTA',
+    excerpt: 'Waxaa jira laba nooc oo aqoon ah oo aan faa\'iido kuu lahayn...',
+    date: 'April 29, 2025'
+  },
+{
+  id: 'Diinta-Nolosha',
+  title: 'INTA AAD KU NOOLAANAYSO NOLOSHA.!',
+  excerpt: 'Nolosha dhan marka la isku daro, Diinta Islaamka intey ka tartaa?...',
+  date: 'June 04, 2025'
 }
-  ];
+  {
+    id: 'DUCO-KU-DHOW-AQBALAADDA!',
+    title: 'DUCO KU DHOW AQBALAADDA!',
+    excerpt: 'Tilmaamo wax tar leh oo uu qofka Muslimka ah u sahlaya inuu duco u jeediyo Rabbigiis si niyad-sami iyo aqbalaad leh...',
+    date: 'May 27, 2025',
+    category: 'Tilmaamaha Ducada',
+    image: '/Picture/pray-7741275_1280.png'
+  }
+];
 
   // Search function
   function performSearch(query) {
