@@ -386,8 +386,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const articles = [
 
   {
-    id: 'Halista Airpodska',
-    title:'ISTECMAALKA WAQTIGA BADAN EE AIRPODS-KA ',
+    id: 'Halista-Airpodska',
+    title: 'Isticmaalka Waqtiga Badan Ee AirPods-ka',
     excerpt:'In kastoo AirPods-ku ay raaxo yihiin, haddana isticmaalka muddada dheer ee mugga sare..',
     date:'June 14,2025'
   },
