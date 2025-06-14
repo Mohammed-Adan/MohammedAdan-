@@ -3312,3 +3312,140 @@ body.dark-mode .card-desc { color: #cbd5e1; }
   background: rgba(94, 114, 228, 0.15);
   border-left: 3px solid var(--primary);
 }
+
+
+
+/* MAIN CONTAINER STYLES */
+.safety-meter {
+  background: var(--lighter); /* Uses your theme's light background */
+  border-radius: 16px; /* Rounded corners */
+  padding: 1.5rem; /* Internal spacing */
+  margin: 2rem 0; /* External spacing */
+  box-shadow: var(--shadow-md); /* Uses your theme's medium shadow */
+  transition: var(--transition); /* Smooth hover transitions */
+}
+
+/* HEADER SECTION */
+.meter-header {
+  display: flex; /* Flex layout for horizontal alignment */
+  align-items: center; /* Vertical centering */
+  gap: 12px; /* Space between icon and text */
+  margin-bottom: 1.5rem; /* Space below header */
+}
+
+.meter-icon {
+  width: 40px; /* Fixed size */
+  height: 40px; /* Fixed size */
+  background: rgba(94, 114, 228, 0.1); /* Light blue background */
+  border-radius: 50%; /* Circular shape */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary); /* Uses your primary color */
+}
+
+/* LEVEL BARS SECTION */
+.meter-levels {
+  display: flex; /* Flex layout */
+  flex-direction: column; /* Vertical stacking */
+  gap: 12px; /* Space between levels */
+}
+
+.level-bar {
+  height: 24px; /* Thick bars */
+  border-radius: 12px; /* Fully rounded ends */
+  margin-bottom: 8px; /* Space below bars */
+  overflow: hidden; /* Contains the shine effect */
+  position: relative; /* For pseudo-element positioning */
+}
+
+/* Color schemes for each level */
+.safe .level-bar {
+  background: linear-gradient(90deg, #4CAF50 0%, #8BC34A 100%); /* Green gradient */
+}
+.warning .level-bar {
+  background: linear-gradient(90deg, #FFC107 0%, #FF9800 100%); /* Yellow gradient */
+}
+.danger .level-bar {
+  background: linear-gradient(90deg, #F44336 0%, #E91E63 100%); /* Red gradient */
+}
+
+/* LEVEL INFORMATION ROW */
+.level-info {
+  display: flex; /* Flex layout */
+  align-items: center; /* Vertical centering */
+  gap: 8px; /* Space between elements */
+  font-size: 0.9rem; /* Slightly smaller text */
+}
+
+/* Color icons to match their level */
+.safe .level-info i { color: #4CAF50; } /* Green */
+.warning .level-info i { color: #FFC107; } /* Yellow */
+.danger .level-info i { color: #F44336; } /* Red */
+
+.level-label {
+  margin-left: auto; /* Pushes label to right */
+  font-weight: 600; /* Semi-bold */
+}
+
+/* FOOTER SECTION */
+.meter-footer {
+  margin-top: 1.5rem; /* Space above footer */
+  padding-top: 1rem; /* Space above content */
+  border-top: 1px dashed var(--light-gray); /* Subtle divider */
+}
+
+.airpods-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(245, 54, 92, 0.1); /* Light red background */
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+/* SHINE ANIMATION */
+.level-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, 
+    rgba(255,255,255,0.3) 0%, 
+    rgba(255,255,255,0) 50%, 
+    rgba(255,255,255,0.3) 100%); /* Shine effect */
+  animation: shine 2.5s infinite; /* Continuous animation */
+  opacity: 0.5; /* Semi-transparent */
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%); } /* Start from left */
+  100% { transform: translateX(100%); } /* Move to right */
+}
+
+/* DARK MODE ADJUSTMENTS */
+.dark-mode .safety-meter {
+  background: var(--light); /* Darker background */
+}
+
+.dark-mode .meter-icon {
+  background: rgba(94, 114, 228, 0.2); /* More visible in dark mode */
+}
+
+.dark-mode .airpods-indicator {
+  background: rgba(245, 54, 92, 0.2); /* More visible in dark mode */
+}
+
+/* MOBILE RESPONSIVENESS */
+@media (max-width: 576px) {
+  .safety-meter {
+    padding: 1.2rem; /* Less padding on small screens */
+  }
+  
+  .level-bar {
+    height: 20px; /* Slightly thinner bars */
+  }
+}
